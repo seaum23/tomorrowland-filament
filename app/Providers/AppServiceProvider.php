@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Filament\Support\Assets\Js;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Filament\Support\Facades\FilamentAsset;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Model::unguard();
+
+        FilamentAsset::register([
+            Js::make('custom-script', __DIR__ . '/../../resources/js/custom.js'),
+        ]);
     }
 }
