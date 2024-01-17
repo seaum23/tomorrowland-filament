@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Frontend\BookingController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Models\Sport;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.landing');
-})->name('home');
+Route::get('book/{sports_name}', [BookingController::class, 'index'])->name('book.index');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');

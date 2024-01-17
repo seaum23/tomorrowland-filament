@@ -3,130 +3,58 @@
 @section('content')
     <section class="slide-container to-top">
 
-        <div id="P_MS659019099ef64"
-            class="master-slider-parent ms-parent-id-5"
-            style>
+        <div id="P_MS659019099ef64"  class="master-slider-parent ms-parent-id-5" style>
 
-            <div id="MS659019099ef64"
-                class="master-slider ms-skin-default">
-                <div class="ms-slide"
-                    data-delay="5"
-                    data-fill-mode="fill">
-                    <div class="ms-pattern ms-patt-1"
-                        style></div>
-                    <img src="https://athlete.sdemo.site/wp-content/plugins/masterslider/public/assets/css/blank.gif"
-                        alt
-                        title
-                        data-src="https://athlete.sdemo.site/wp-content/uploads/2015/04/fitness_wordpress_themes_bg_1.jpg" />
-                    <div class="ms-layer heading-button msp-cn-5-3"
-                        style
-                        data-effect="t(true,n,-150,n,n,n,n,n,n,n,n,n,n,n,n)"
-                        data-duration="1062"
-                        data-delay="2050"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="108"
-                        data-offset-y="90"
-                        data-origin="ml">
-                        Try A Free Class</div>
-                    <div class="ms-layer  msp-cn-5-2"
-                        style
-                        data-effect="t(true,n,-500,n,n,n,n,n,n,n,n,n,n,n,n)"
-                        data-duration="1175"
-                        data-delay="1087"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="103"
-                        data-offset-y="0"
-                        data-origin="ml">
-                        Make You Be The Fighter</div>
-                    <div class="ms-layer  msp-cn-5-1"
-                        style
-                        data-effect="t(true,-250,n,n,n,n,n,n,n,n,-25,n,n,n,n)"
-                        data-duration="1200"
-                        data-ease="easeInOutExpo"
-                        data-resize="false"
-                        data-offset-x="108"
-                        data-offset-y="-100"
-                        data-origin="ml">
-                        Athlete Fitness Club</div>
-                </div>
-                <div class="ms-slide"
-                    data-delay="5"
-                    data-fill-mode="fill">
-                    <div class="ms-pattern ms-patt-1"
-                        style></div>
-                    <img src="https://athlete.sdemo.site/wp-content/plugins/masterslider/public/assets/css/blank.gif"
-                        alt
-                        title
-                        data-src="https://athlete.sdemo.site/wp-content/uploads/2014/12/bg_2.jpg" />
-                    <div class="ms-layer heading-button msp-cn-5-15"
-                        style
-                        data-effect="t(true,n,-150,n,n,n,n,n,n,n,n,n,n,n,n)"
-                        data-duration="1062"
-                        data-delay="2050"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="108"
-                        data-offset-y="90"
-                        data-origin="ml">
-                        Try A Free Class</div>
-                    <div class="ms-layer  msp-cn-5-14"
-                        style
-                        data-effect="t(true,n,-500,n,n,n,n,n,n,n,n,n,n,n,n)"
-                        data-duration="1175"
-                        data-delay="1087"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="103"
-                        data-offset-y="0"
-                        data-origin="ml">
-                        Make You Be The Fighter</div>
-                    <div class="ms-layer  msp-cn-5-13"
-                        style
-                        data-effect="t(true,-250,n,n,n,n,n,n,n,n,-25,n,n,n,n)"
-                        data-duration="1200"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="108"
-                        data-offset-y="-100"
-                        data-origin="ml">
-                        Athlete Fitness Club</div>
-                </div>
-                <div class="ms-slide"
-                    data-delay="5"
-                    data-fill-mode="fill">
-                    <div class="ms-pattern ms-patt-1"
-                        style></div>
-                    <img src="https://athlete.sdemo.site/wp-content/plugins/masterslider/public/assets/css/blank.gif"
-                        alt
-                        title
-                        data-src="https://athlete.sdemo.site/wp-content/uploads/2014/12/bg-home-v2.png" />
-                    <div class="ms-layer heading-button msp-cn-5-12"
-                        style
-                        data-effect="t(true,n,-150,n,n,n,n,n,n,n,n,n,n,n,n)"
-                        data-duration="1062"
-                        data-delay="2050"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="108"
-                        data-offset-y="90"
-                        data-origin="ml">
-                        Try A Free Class</div>
-                    <div class="ms-layer  msp-cn-5-11"
-                        style
-                        data-effect="t(true,n,-500,n,n,n,n,n,n,n,n,n,n,n,n)"
-                        data-duration="1175"
-                        data-delay="1087"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="103"
-                        data-offset-y="0"
-                        data-origin="ml">
-                        Make You Be The Fighter</div>
-                    <div class="ms-layer  msp-cn-5-10"
-                        style
-                        data-effect="t(true,-250,n,n,n,n,n,n,n,n,-25,n,n,n,n)"
-                        data-duration="1200"
-                        data-ease="easeInOutExpo"
-                        data-offset-x="108"
-                        data-offset-y="-100"
-                        data-origin="ml">
-                        Athlete Fitness Club</div>
-                </div>
+            <div id="MS659019099ef64" class="master-slider ms-skin-default">
+                @foreach ($sports as $sport)
+                    @if ($sport->is_featured)
+                    <div class="ms-slide"
+                        data-delay="5"
+                        data-fill-mode="fill">
+                        <div class="ms-pattern ms-patt-1"
+                            style></div>
+                        <img src="https://athlete.sdemo.site/wp-content/plugins/masterslider/public/assets/css/blank.gif"
+                            alt
+                            title
+                            data-src="{{asset('storage/'.$sport->attachments[0])}}" />
+                        {{-- <img src="https://athlete.sdemo.site/wp-content/plugins/masterslider/public/assets/css/blank.gif"
+                            alt
+                            title
+                            data-src="{{asset('storage/'.$sport->attachments[1])}}" /> --}}
+                            {{-- data-src="https://athlete.sdemo.site/wp-content/uploads/2014/12/bg_2.jpg" /> --}}
+                        <div class="ms-layer heading-button msp-cn-5-3"
+                            style
+                            data-effect="t(true,n,-150,n,n,n,n,n,n,n,n,n,n,n,n)"
+                            data-duration="1062"
+                            data-delay="2050"
+                            data-ease="easeInOutExpo"
+                            data-offset-x="108"
+                            data-offset-y="90"
+                            data-origin="ml">
+                            Book for {{ $sport->name }} now</div>
+                        <div class="ms-layer  msp-cn-5-2"
+                            style
+                            data-effect="t(true,n,-500,n,n,n,n,n,n,n,n,n,n,n,n)"
+                            data-duration="1175"
+                            data-delay="1087"
+                            data-ease="easeInOutExpo"
+                            data-offset-x="103"
+                            data-offset-y="0"
+                            data-origin="ml">
+                            Want to play {{ $sport->name }}?</div>
+                        <div class="ms-layer  msp-cn-5-1"
+                            style
+                            data-effect="t(true,-250,n,n,n,n,n,n,n,n,-25,n,n,n,n)"
+                            data-duration="1200"
+                            data-ease="easeInOutExpo"
+                            data-resize="false"
+                            data-offset-x="108"
+                            data-offset-y="-100"
+                            data-origin="ml">
+                            Tomorrowland</div>
+                    </div>
+                    @endif
+                @endforeach
             </div>
 
         </div>
@@ -142,14 +70,7 @@
                     autohide: true,
                     overVideo: true
                 });
-                masterslider_ef64.control('bullets', {
-                    autohide: true,
-                    overVideo: true,
-                    dir: 'h',
-                    align: 'bottom',
-                    space: 6,
-                    margin: 10
-                });
+                
                 // slider setup
                 masterslider_ef64.setup("MS659019099ef64", {
                     width: 1400,
@@ -158,8 +79,8 @@
                     space: 0,
                     start: 1,
                     grabCursor: true,
-                    swipe: true,
-                    mouse: true,
+                    swipe: false,
+                    mouse: false,
                     keyboard: false,
                     layout: "fullscreen",
                     wheel: false,
@@ -198,35 +119,39 @@
                 window.masterslider_instances.push(masterslider_ef64);
             });
         </script>
-        <div id="to-bottom"
-            class="to-bottom"><i class="fa fa-angle-down"></i></div>
+        <div id="to-bottom" class="to-bottom"><i class="fa fa-angle-down"></i></div>
     </section>
-    <div class="contents-main"
-        id="contents-main">
-        <article id="post-2"
-            class="post-2 page type-page status-publish hentry">
+    <div class="contents-main" id="contents-main">
+        <article id="post-2" class="post-2 page type-page status-publish hentry">
             <div class="entry-content">
                 <div class="vc_row wpb_row vc_row-fluid man-girl vc_custom_1425549921432">
-                    <div class="container">
+                    <div class="container" style="width: 100%">
                         <div class="row">
-                            <div class="content-main content-main-left wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill">
-                                <div class="vc_column-inner vc_custom_1425464759231">
-                                    <div class="wpb_wrapper">
-                                        <div class="img-class"><img src="https://athlete.sdemo.site/wp-content/uploads/2014/12/image-1.png"
-                                                alt="Men Class"></div>
-                                        <div class="class-content ">
-                                            <div class="title">
-                                                <h3 class="title-men">Men Class</h3>
-                                            </div>
-                                            <div class="class-content-text">
-                                                <p class="desc-content">Lorem ipsum dolor sit amet, consectetur adi sollicitudin. Suspendisse pulvinar, velit nec pharetra interdum, ante tellus ornare mi, et mollis tellus neque vitae elit</p>
-                                                <div class="join"><a href="#">Join Now</a></div>
+                            @foreach ($sports as $sport)
+                                @if ($sport->show_on_banner)
+                                    <div class="content-main content-main-left wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill" style="background-image: linear-gradient(
+                                        rgba(0, 0, 0, 0.3), 
+                                        rgba(0, 0, 0, 0.3)
+                                      ),
+                                      url({{ asset('storage/'.$sport->attachments[0]) }})">
+                                        <div class="vc_column-inner vc_custom_1425464759231">
+                                            <div class="wpb_wrapper">
+                                                {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
+                                                <div class="class-content ">
+                                                    <div class="title">
+                                                        <h3 class="title-men">{{ $sport->name }}</h3>
+                                                    </div>
+                                                    <div class="class-content-text">
+                                                        <p class="desc-content">{{ $sport->description }}</p>
+                                                        <div class="join"><a href="{{ route('book.index', $sport->name) }}">Book Now</a></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="content-main content-main-right wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill">
+                                @endif
+                            @endforeach
+                            {{-- <div class="content-main content-main-right wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill">
                                 <div class="vc_column-inner vc_custom_1425464769875">
                                     <div class="wpb_wrapper">
                                         <div class="img-class"><img src="https://athlete.sdemo.site/wp-content/uploads/2014/12/image-2.png"
@@ -242,7 +167,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

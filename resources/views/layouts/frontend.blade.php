@@ -1218,7 +1218,7 @@
     </script>
     <div id="evo_global_data"
         data-d="{&quot;calendars&quot;:[]}"></div>
-    <div class="evo_lightboxes"
+    {{-- <div class="evo_lightboxes"
         style="display:block">
         <div class="evo_lightbox eventcard eventon_events_list"
             id>
@@ -1233,7 +1233,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- <script type="text/javascript"
         src="https://athlete.sdemo.site/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0"
