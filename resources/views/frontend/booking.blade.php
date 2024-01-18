@@ -1,6 +1,7 @@
 @extends('layouts.frontend')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('js/app/bootstrap-grid.css') }}">
 <style>
     .page-heading{
         background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'. $sport->attachments[0]) }})
@@ -152,49 +153,81 @@
             </div>
         </div>
     </section>
-    <div class="page-content">
-        <div class="main-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product-list">                            
-                            <label for="birthday">Day to book:</label>
-                            <input class="input-text" type="date" id="booking_day" name="booking_day" value="{{ now()->format('Y-m-d') }}" required>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        @foreach ($shifts as $shift)
-                            <div class="card">
-                                <h1>{{ $shift->name }}</h1>
-                                <div class="b-row">
-                                    <?php
-                                        $start_time = $shift->start_time;
-                                        $end_time = $shift->end_time;
-                                        if($start_time < $end_time){
-                                            while ($start_time < $end_time) {
-                                    ?>                                                    
-                                        <div class="b-col">
-                                            <div class="article ">
-                                                <input type="checkbox" id="feature1" />
-                                                <div>
-                                                    <span>
-                                                        {{$start_time->format('h:i a')}} - {{ $start_time->addHour()->format('h:i a') }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php
-                                                ;
-                                            }
-                                        }
-                                    ?>                                                    
+    @if($errors->any())
+        {{ implode('', $errors->all('<div>:message</div>')) }}
+    @endif
+    <form action="{{ route('book.store') }}" method="post">
+        @csrf
+        <input type="hidden" name="sport" value="{{ $sport->id }}">
+        <div class="page-content bootstrap-wrapper">
+            <div class="main-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="product-list">
+                                        <label for="birthday">Day to book:</label>
+                                        {{-- <input class="input-text" type="date" id="booking_day" name="booking_day" value="{{ now()->format('Y-m-d') }}" required> --}}
+                                        <input class="input-text" type="date" id="booking_day" name="booking_day" required>
+                                    </div>
                                 </div>
-                                {{-- {{ $shift->start_time->format('h:i a') }} --}}
+                                <div id="shifts-body" class="col-12">
+                                </div>
                             </div>
-                        @endforeach
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <input type="hidden" name="total_amount" id="total_amount">
+                            <div class="price-box">
+                                <span class="woocommerce-Price-amount amount">
+                                    <bdi>
+                                        <span id="price_amount">0</span>
+                                        <span class="woocommerce-Price-currencySymbol">taka</span>
+                                    </bdi>
+                                </span>
+                            </div>
+                            <label for="phone">Provide informations:</label>
+                            <input class="input-text" type="text" id="name" name="name" placeholder="Name" required>
+                            <input class="input-text" type="text" id="phone" name="phone" placeholder="Phone number" required>
+                            <input class="input-text" type="text" id="email" name="email" placeholder="Email" required>
+                            <button type="submit" class="single_add_to_cart_button button alt btn-cart">Confirm</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+@endsection
+
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    let price = Number(0);
+    $('#booking_day').on('change', (e) => {
+        let booking_date = e.target.value;
+        console.log(booking_date)
+        $.get('{{ route('book.shift.available') }}',{ booking_date })
+        .done(function(response) {
+            $('#price_amount').html(0);
+            $('#total_amount').val(0);            
+            price = 0;
+            $('#shifts-body').html(response);
+            $('.booking-times').on('change', (e) => {
+                let shift_price = e.target.dataset.price;
+                console.log(shift_price)
+                if(e.target.checked){
+                    price += Number(shift_price)
+                }else{
+                    price -= Number(shift_price)
+                }
+                $('#total_amount').val(price);            
+                $('#price_amount').html(price)
+            });
+        })
+    });
+
+    
+
+</script>
 @endsection

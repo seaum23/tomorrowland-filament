@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('book/available-shifts', [BookingController::class, 'availableShifts'])->name('book.shift.available');
+Route::post('confirm-booking', [BookingController::class, 'store'])->name('book.store');
 Route::get('book/{sports_name}', [BookingController::class, 'index'])->name('book.index');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
