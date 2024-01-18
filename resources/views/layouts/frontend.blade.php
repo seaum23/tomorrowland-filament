@@ -387,6 +387,7 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/frontend/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend/custom.css') }}">
     {{-- @vite(['resources/css/app.css']) --}}
     {{-- <link rel="stylesheet"
         id="athlete-style-css"
@@ -896,87 +897,7 @@
                 </ul>
             </div>
             <div class="content-wrapper">
-                <header id="header"
-                    class="header header-container header-container-3 alt reveal">
-                    <div class="top-links">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="top-link">
-                                        <span class="address-top"><i class="fa fa-map-marker "></i>Room 1214 #187 Tay Son Building, Dong Da Distr Ha Noi, Vietnam
-                                        </span><span class="call-top"><i class="fa fa-phone"></i>Call us: (0123) 456 7893</span>
-                                    </div>
-                                </div>
-                                <div class="quick-access col-md-1 col-sm-2 col-xs-3">
-                                    <div class="search-form">
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                        <form role="search"
-                                            method="get"
-                                            action="https://athlete.sdemo.site/">
-                                            <div class="search-box">
-                                                <input type="search"
-                                                    title="Search for:"
-                                                    value
-                                                    name="s"
-                                                    placeholder="Enter your keywords"
-                                                    class="top-search">
-                                                <input type="image"
-                                                    alt="Submit"
-                                                    src="https://athlete.sdemo.site/wp-content/themes/athlete/images/search.png"
-                                                    class="sub-search">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="shopping-cart">
-                                        <a href="#"><i class="fa fa-shopping-cart"></i>@if (session('cart') !== null AND count(session('cart')) > 0)  <span>{{ count(session('cart')) }}</span> @endif
-                                        </a>
-                                        <div class="mini-cart product-popular">
-                                            <aside id="woocommerce_widget_cart-2"
-                                                class="woocommerce widget_shopping_cart">
-                                                <h3 class="title"><span>Your Cart</span></h3>
-                                                <div class="widget_shopping_cart_content">
-                                                    @if (session('cart') !== null AND count(session('cart')) > 0)
-                                                        @foreach (session('cart') as $item)
-                                                            <ul class="widget_products ">
-                                                                <li>
-                                                                    <div class="product-image">
-                                                                        <a href="#"><img width="300"
-                                                                                height="300"
-                                                                                src="{{ asset($item['turf_image']) }}"
-                                                                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                                                alt=""
-                                                                                loading="lazy"></a>
-                                                                    </div>
-                                                                    <div class="info-products">
-                                                                        <a class="product-name"
-                                                                            href="#">{{$item['turf_name'] . " " . $item['shift_name']}} Shift</a>
-                                                                        <p style="margin: 0">From {{ $item['start_time'] }} to {{ $item['end_time'] }}</p>
-                                                                        <div class="price-box">
-                                                                            <span class="amount">{{ $item['total_hour'] }} × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>{{$item['price_per_hour']}}</bdi></span></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        @endforeach
-                                                        <!-- end product list -->
-                                                        <p class="total pull-right">Subtotal:&nbsp; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳</span>{{ session('cart_subtotal') }}</bdi></span></p>
-                                                        <div class="clearfix"></div>
-                                                        <p class="buttons">
-                                                            <a href="{{ route('cart') }}"
-                                                                class="button wc-forward">View Cart</a>
-                                                            <a href="https://athlete.sdemo.site/checkout/"
-                                                                class="button checkout wc-forward">Checkout</a>
-                                                        </p>
-                                                    @endif
-
-                                                </div>
-                                            </aside>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <header id="header" class="header header-container header-container-3 alt reveal">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-2 col-sm-4 col-xs-4 logo">

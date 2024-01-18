@@ -132,7 +132,7 @@ class BookingController extends Controller
             'status' => 1
         ]);
 
-        return back();
+        return redirect(route('success'));
     }
 
     /**

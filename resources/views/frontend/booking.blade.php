@@ -3,8 +3,15 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('js/app/bootstrap-grid.css') }}">
 <style>
+    .content-div{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
     .page-heading{
-        background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'. $sport->attachments[0]) }})
+        background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'. $sport->attachments[0]) }});
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .time-slot {
@@ -163,7 +170,7 @@
             <div class="main-content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-8 col-12">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="product-list">
@@ -176,7 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-4 col-12">
                             <input type="hidden" name="total_amount" id="total_amount">
                             <div class="price-box">
                                 <span class="woocommerce-Price-amount amount">
