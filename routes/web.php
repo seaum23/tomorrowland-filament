@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Models\Sport;
@@ -24,3 +25,4 @@ Route::get('success', function(){
 })->name('success');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
