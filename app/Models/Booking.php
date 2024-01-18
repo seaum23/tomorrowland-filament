@@ -13,4 +13,12 @@ class Booking extends Model
         'booking_date' => 'datetime',
         'booking_times' => 'array'
     ];
+
+    public function customer(){
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function sport(){
+        return $this->belongsTo(Sport::class);
+    }
 }
