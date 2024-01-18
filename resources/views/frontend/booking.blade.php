@@ -62,21 +62,36 @@
         justify-content: center;
     }
 
-    .b-col-3 {
+    /* .b-col {
         -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-        flex: 0 0 25%;
-        max-width: 25%;
-    }
+        -ms-flex: 0 0 16.66%;
+        flex: 0 0 16.66%;
+        max-width: 16.66%;
+    } */
 
     .article {
         position: relative;
         width: 140px;
-        height: 100px;
+        height: 50px;
         margin: 5px;
         float: left;
-        border: 2px solid #50bcf2;
         box-sizing: border-box;
+        border: 2px solid #ec3642;
+
+        transition: all .3s ease 0s;
+        -o-transition: all .3s ease 0s;
+        -ms-transition: all .3s ease 0s;
+        -moz-transition: all .3s ease 0s;
+        -webkit-transition: all .3s ease 0s;
+    }
+
+    .article:hover {
+        background: #ec3642;
+        transition: all .3s ease 0s;
+        -o-transition: all .3s ease 0s;
+        -ms-transition: all .3s ease 0s;
+        -moz-transition: all .3s ease 0s;
+        -webkit-transition: all .3s ease 0s;
     }
 
     .article div {
@@ -94,13 +109,33 @@
         top: 0;
         left: 0;
         width: 140px;
-        height: 100px;
+        height: 50px;
         opacity: 0;
         cursor: pointer;
     }
 
     input[type=checkbox]:checked ~ div {
-        background-color: #50bcf2;
+        background-color: #ec3642;
+    }
+
+
+    .article.disabled{
+        border: 2px solid #a5a5a5;
+        background: #a5a5a5;
+    }
+
+    .article.disabled div{
+        text-decoration: line-through;
+    }
+
+    .article.disabled:hover {
+        background: #a5a5a5;
+        transition: all .3s ease 0s;
+        cursor: not-allowed;
+    }
+
+    input[type=checkbox]:disabled ~ div {
+        border: 2px solid #a5a5a5;
     }
 </style>
 @endsection
@@ -132,25 +167,27 @@
                             <div class="card">
                                 <h1>{{ $shift->name }}</h1>
                                 <div class="b-row">
-                                    @php
+                                    <?php
                                         $start_time = $shift->start_time;
                                         $end_time = $shift->end_time;
                                         if($start_time < $end_time){
                                             while ($start_time < $end_time) {
-                                    @endphp                                                    
-                                        <div class="article">
-                                            <input type="checkbox" id="feature1"/>
-                                            <div>
-                                                <span>
-                                                    {{$start_time->format('h:i a')}} - {{ $start_time->addHour()->format('h:i a') }}
-                                                </span>
+                                    ?>                                                    
+                                        <div class="b-col">
+                                            <div class="article ">
+                                                <input type="checkbox" id="feature1" />
+                                                <div>
+                                                    <span>
+                                                        {{$start_time->format('h:i a')}} - {{ $start_time->addHour()->format('h:i a') }}
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                    @php
+                                    <?php
                                                 ;
                                             }
                                         }
-                                    @endphp
+                                    ?>                                                    
                                 </div>
                                 {{-- {{ $shift->start_time->format('h:i a') }} --}}
                             </div>
