@@ -95,7 +95,9 @@ class BookingResource extends Resource
             ])
             ->bulkActions([
                 
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
+
     }
 
     public static function getRelations(): array

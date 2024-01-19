@@ -6,6 +6,7 @@ use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BookingController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ use App\Http\Controllers\Frontend\BookingController;
 
 // Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 // Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+
+Route::get('production', function(){
+    Artisan::call('optimize:clear');
+    Artisan::call('icons:cache');
+});
 
 Route::get('customer/google/callback', [GoogleLoginController::class, 'callback'])->name('google.callback');
 
