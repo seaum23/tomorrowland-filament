@@ -56,6 +56,7 @@ class CustomerPanelProvider extends PanelProvider
             ->authGuard('customer')
             ->plugins([
                 \ChrisReedIO\Socialment\SocialmentPlugin::make(),
-            ]);
+            ])
+            ->viteTheme('resources/css/filament/customer/theme.css');
     }
 }

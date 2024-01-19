@@ -30,7 +30,7 @@ class BookingController extends Controller
     public function availableShifts(Request $request){
         $shifts = Shift::get();
         $booking_date = new Carbon($request->booking_date);
-        $bookings = Booking::where('booking_date', $booking_date)->get();
+        $bookings = Booking::where('booking_date', $booking_date)->where('status', '!=', 3)->get();
 
         $times = $bookings->pluck('booking_times')->toArray();
         $only_booked_times = [];

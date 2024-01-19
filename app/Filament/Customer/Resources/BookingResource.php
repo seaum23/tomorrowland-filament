@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Customer\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
@@ -11,10 +11,13 @@ use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\BookingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\BookingResource\RelationManagers;
+use App\Filament\Customer\Resources\BookingResource\Pages;
+use App\Filament\Customer\Resources\BookingResource\RelationManagers;
 
 class BookingResource extends Resource
 {
@@ -53,9 +56,39 @@ class BookingResource extends Resource
                 ->button()
                 ->color('danger')
                 ->visible(fn (Booking $record): bool => $record->status == 1),
+                Action::make('submitPaymentInfo')
+                ->form([                    
+                    TextInput::make('transaction_id')
+                    ->required()
+                    ->columnSpan(1),
+                    TextInput::make('vendor')
+                    ->required()
+                    ->columnSpan(1),
+                    DatePicker::make('payment_date')
+                    ->required()
+                    ->columnSpan(2),
+                    TextInput::make('note')
+                    ->columnSpan(2),
+                    FileUpload::make('attachments')
+                    ->multiple()
+                    ->columnSpan(2)
+                ])
+                ->button()
+                ->visible(fn (Booking $record): bool => $record->status == 1)
+                ->action(function (array $data, Booking $record): void {
+                    $record->bookingPayment()->create([
+                        'vendor' => $data['vendor'],
+                        'transaction_id' => $data['transaction_id'],
+                        'note' => $data['note'],
+                        'payment_date' => $data['payment_date'],
+                        'attachments' => $data['attachments'],
+                    ]);
+                    $record->status = 2;
+                    $record->save();
+                })
             ])
             ->bulkActions([
-
+                
             ]);
     }
 

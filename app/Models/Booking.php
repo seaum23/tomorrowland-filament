@@ -21,4 +21,8 @@ class Booking extends Model
     public function sport(){
         return $this->belongsTo(Sport::class);
     }
+
+    public function bookingPayment(){
+        return $this->hasOne(BookingPayment::class);
+    }
 }
