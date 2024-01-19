@@ -6,5 +6,8 @@ export default {
         './app/Filament/**/*.php',
         './resources/views/filament/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
+        
+        // Ensure the line below is listed!!!
+        "./vendor/chrisreedio/socialment/resources/**/*.blade.php",
     ],
 }

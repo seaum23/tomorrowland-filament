@@ -53,6 +53,9 @@ class CustomerPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->authGuard('customer');
+            ->authGuard('customer')
+            ->plugins([
+                \ChrisReedIO\Socialment\SocialmentPlugin::make(),
+            ]);
     }
 }
