@@ -822,6 +822,9 @@
                 <ul id="menu-main-menu"
                     class="nav-menu">
                     <li class="menu-item menu-item-type-post_type menu-item-objec   t-page"><a href="{{ route('home') }}">Home</a></li>
+                    @foreach ($sports as $sport)
+                        <li class="menu-item menu-item-type-post_type menu-item-objec   t-page"><a href="{{ route('book.index', $sport->name) }}">{{ $sport->name }}</a></li>                        
+                    @endforeach
                     {{-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-has-children dropdown selected active "><a href="https://athlete.sdemo.site/"
                             data-toggle="dropdown">Home</a><i class="icon-arrow"></i>
                         <ul class="child-nav dropdown-nav">
@@ -857,7 +860,7 @@
                             </li>
                         </ul>
                     </li> --}}
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
+                    {{-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
                             data-toggle="dropdown">Page!</a><i class="icon-arrow"></i>
                         <ul class="child-nav dropdown-nav">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/page/about-us/">About us</a></li>
@@ -867,8 +870,8 @@
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/page/our-classes-2/">Our Trainers</a></li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-iw_teacher"><a href="https://athlete.sdemo.site/teachers/392-2/">Trainer Profile</a></li>
                         </ul>
-                    </li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
+                    </li> --}}
+                    {{-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
                             data-toggle="dropdown">Products</a><i class="icon-arrow"></i>
                         <ul class="child-nav dropdown-nav">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/shop/">Product Listing</a></li>
@@ -877,23 +880,23 @@
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/cart/">Product Cart</a></li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/checkout/">Product Checkout</a></li>
                         </ul>
-                    </li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
+                    </li> --}}
+                    {{-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
                             data-toggle="dropdown">Event Calendar</a><i class="icon-arrow"></i>
                         <ul class="child-nav dropdown-nav">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/calendar-full-view/">Calendar Full View</a></li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/event-list/">Event Listing</a></li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-ajde_events"><a href="https://athlete.sdemo.site/events/boxing-for-girls-2/">Event Details</a></li>
                         </ul>
-                    </li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
+                    </li> --}}
+                    {{-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a href="#"
                             data-toggle="dropdown">Blog</a><i class="icon-arrow"></i>
                         <ul class="child-nav dropdown-nav">
                             <li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://athlete.sdemo.site/category/success-stories/">Blog Listing</a></li>
                             <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="?p=347">Blog Detail</a></li>
                         </ul>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li>
+                    </li> --}}
+                    {{-- <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li> --}}
                 </ul>
             </div>
             <div class="content-wrapper">
@@ -911,6 +914,9 @@
                                     <ul id="menu-main-menu-1"
                                         class="nav-menu">
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('home') }}">Home</a></li>
+                                        @foreach ($sports as $sport)
+                                            <li class="menu-item menu-item-type-post_type menu-item-objec   t-page"><a href="{{ route('book.index', $sport->name) }}">{{ $sport->name }}</a></li>                        
+                                        @endforeach
                                         {{-- <li id="menu-item-37"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-has-children menu-item-37 selected active "><a href="https://athlete.sdemo.site/">Home<i class="icon-arrow"></i></a>
                                             <ul class="child-nav dropdown-nav">

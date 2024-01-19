@@ -31,7 +31,7 @@
                             data-offset-x="108"
                             data-offset-y="90"
                             data-origin="ml">
-                            Book for {{ $sport->name }} now</div>
+                            <a href="{{ route('book.index', $sport->name) }}">Book for {{ $sport->name }} now</a></div>
                         <div class="ms-layer  msp-cn-5-2"
                             style
                             data-effect="t(true,n,-500,n,n,n,n,n,n,n,n,n,n,n,n)"
@@ -182,7 +182,7 @@
                                                 <div class="vc_column-inner">
                                                     <div class="wpb_wrapper">
                                                         <div class="title-page title-about">
-                                                            <h3>About the Athlete</h3>
+                                                            <h3>About Tomorrowland</h3>
                                                             <p>Working from home meant we could vary snack and coffee breaks, change our desks or view, goof off, drink on the job, even spend the day in pajamas.</p>
                                                         </div>
                                                         <div class="infor-list col-md-6 col-sm-6 col-xs-12">
@@ -237,7 +237,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="vc_row wpb_row vc_inner vc_row-fluid about-bottom vc_custom_1425550129782">
+                                {{-- <div class="vc_row wpb_row vc_inner vc_row-fluid about-bottom vc_custom_1425550129782">
                                     <div class="container">
                                         <div class="row">
                                             <div class="hour about-con wpb_column vc_column_container vc_col-sm-4">
@@ -348,12 +348,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="vc_row wpb_row vc_row-fluid training vc_custom_1425550204607">
+                {{-- <div class="vc_row wpb_row vc_row-fluid training vc_custom_1425550204607">
                     <div class="wpb_column vc_column_container vc_col-sm-12">
                         <div class="vc_column-inner">
                             <div class="wpb_wrapper">
@@ -496,8 +496,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="vc_row wpb_row vc_row-fluid vc_custom_1429775700688">
+                </div> --}}
+                {{-- <div class="vc_row wpb_row vc_row-fluid vc_custom_1429775700688">
                     <div class="wpb_column vc_column_container vc_col-sm-12">
                         <div class="vc_column-inner">
                             <div class="wpb_wrapper">
@@ -524,8 +524,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="vc_row wpb_row vc_row-fluid our-pricing vc_custom_1427877527714">
+                </div> --}}
+                {{-- <div class="vc_row wpb_row vc_row-fluid our-pricing vc_custom_1427877527714">
                     <div class="wpb_column vc_column_container vc_col-sm-12">
                         <div class="vc_column-inner">
                             <div class="wpb_wrapper">
@@ -588,7 +588,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="vc_row wpb_row vc_row-fluid">
                     <div class="container">
                         <div class="row">
@@ -719,7 +719,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="vc_row wpb_row vc_row-fluid">
+                {{-- <div class="vc_row wpb_row vc_row-fluid">
                     <div class="wpb_column vc_column_container vc_col-sm-12">
                         <div class="vc_column-inner">
                             <div class="wpb_wrapper">
@@ -893,7 +893,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <footer class="entry-footer ">
             </footer>

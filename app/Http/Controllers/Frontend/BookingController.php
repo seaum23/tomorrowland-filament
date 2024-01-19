@@ -69,20 +69,20 @@ class BookingController extends Controller
                     HTML;
                 }
             }else if($start_time > $end_time){
-                while ($start_time > $end_time) {
+                while ($end_time < $start_time) {
                     $disabled = "";
 
-                    if(in_array($start_time->format('H:i:s'), $only_booked_times)){
+                    if(in_array($end_time->format('H:i:s'), $only_booked_times)){
                         $disabled = "disabled";
                     }
 
                     $html .= <<<HTML
                     <div class="b-col">
                         <div class="article {$disabled}">
-                            <input class="booking-times" data-price={$shift->hourly_rate} type="checkbox" name="booking_times[]" value="{$start_time->format('H:i:s')}" {$disabled}/>
+                            <input class="booking-times" data-price={$shift->hourly_rate} type="checkbox" name="booking_times[]" value="{$end_time->format('H:i:s')}" {$disabled}/>
                             <div>
                                 <span>
-                                    {$start_time->format('h:i a')} - {$start_time->subHour()->format('h:i a')}
+                                    {$end_time->format('h:i a')} - {$end_time->addHour()->format('h:i a')}
                                 </span>
                             </div>
                         </div>

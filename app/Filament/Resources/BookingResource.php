@@ -40,7 +40,13 @@ class BookingResource extends Resource
                 ->dateTime('Y-m-d'),
                 TextColumn::make('booking_times'),
                 ViewColumn::make('booking_times')->view('filament.tables.columns.booking_times'),
-                TextColumn::make('total_amount'),                
+                TextColumn::make('total_amount'),
+                TextColumn::make('bookingPayment.vendor'),
+                TextColumn::make('bookingPayment.transaction_id')
+                ->copyable()
+                ->copyMessage('Transaction id copied'),
+                TextColumn::make('bookingPayment.payment_date')
+                ->dateTime('Y-m-d'),
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
             ])
             ->filters([

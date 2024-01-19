@@ -11,6 +11,7 @@ class BookingPayment extends Model
     use HasFactory;
 
     protected $casts = [
+        'payment_date' => 'datetime',
         'attachments' => 'array',
     ];
 }
