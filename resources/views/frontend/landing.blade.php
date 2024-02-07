@@ -129,7 +129,7 @@
                         <div class="row">
                             @foreach ($sports as $sport)
                                 @if ($sport->show_on_banner)
-                                    <div class="content-main content-main-left wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill" style="background-image: linear-gradient(
+                                    <div class="content-main content-main-left wpb_column vc_column_container {{ $sports->count() >= 3 ? "vc_col-sm-4" : "vc_col-sm-6" }}  vc_col-has-fill" style="background-image: linear-gradient(
                                         rgba(0, 0, 0, 0.3), 
                                         rgba(0, 0, 0, 0.3)
                                       ),
@@ -142,7 +142,7 @@
                                                         <h3 class="title-men">{{ $sport->name }}</h3>
                                                     </div>
                                                     <div class="class-content-text">
-                                                        <p class="desc-content">{{ $sport->description }}</p>
+                                                        <p style="font-size: 2rem" class="desc-content">{{ $sport->description }}</p>
                                                         <div class="join"><a href="{{ route('book.index', $sport->name) }}">Book Now</a></div>
                                                     </div>
                                                 </div>
