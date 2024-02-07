@@ -40,6 +40,7 @@ class BookingResource extends Resource
             ->columns([
                 TextColumn::make('customer.name'),
                 TextColumn::make('customer.phone'),
+                TextColumn::make('customer.email'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
                 ->dateTime('Y-m-d'),
