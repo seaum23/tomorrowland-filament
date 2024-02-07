@@ -57,6 +57,7 @@ class CustomerPanelProvider extends PanelProvider
             ->plugins([
                 \ChrisReedIO\Socialment\SocialmentPlugin::make(),
             ])
-            ->viteTheme('resources/css/filament/customer/theme.css');
+            ->viteTheme('resources/css/filament/customer/theme.css')
+            ->sidebarCollapsibleOnDesktop();
     }
 }

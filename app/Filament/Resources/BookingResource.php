@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\BookingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -47,6 +48,7 @@ class BookingResource extends Resource
                 ->copyMessage('Transaction id copied'),
                 TextColumn::make('bookingPayment.payment_date')
                 ->dateTime('Y-m-d'),
+                ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
             ])
             ->filters([

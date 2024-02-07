@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'phone' => 'string',
+            'phone' => 'nullable|string',
             'email' => 'string',
             'sport' => 'string',
             'booking_date' => 'date',

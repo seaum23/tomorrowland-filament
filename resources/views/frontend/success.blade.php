@@ -24,7 +24,7 @@
                             data-offset-x="108"
                             data-offset-y="90"
                             data-origin="ml">
-                            Please complete payment</div>
+                            Please complete your payment</div>
                         <div class="ms-layer  msp-cn-5-2"
                             style
                             data-effect="front(long)" 

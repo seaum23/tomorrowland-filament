@@ -12,6 +12,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
@@ -38,6 +39,7 @@ class BookingResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('customer.name'),
+                TextColumn::make('customer.phone'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
                 ->dateTime('Y-m-d'),
@@ -50,6 +52,7 @@ class BookingResource extends Resource
                 ->copyMessage('Transaction id copied'),
                 TextColumn::make('bookingPayment.payment_date')
                 ->dateTime('Y-m-d'),
+                ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
             ])
             ->filters([

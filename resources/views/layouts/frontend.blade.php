@@ -579,6 +579,19 @@
             border-width: 0px !important;
             padding: 0px !important;
         }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background: transparent;
+            bottom: 0;
+            color: transparent;
+            cursor: pointer;
+            height: auto;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: auto;
+        }
     </style><noscript>
         <style>
             .wpb_animate_when_almost_visible {
