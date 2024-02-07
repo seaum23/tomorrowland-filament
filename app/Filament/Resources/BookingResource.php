@@ -36,6 +36,7 @@ class BookingResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('customer.name'),
+                TextColumn::make('customer.phone'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
                 ->dateTime('Y-m-d'),
