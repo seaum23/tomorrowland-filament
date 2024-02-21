@@ -36,5 +36,7 @@ Route::get('success', function(){
     return view('frontend.success');
 })->name('success');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::middleware(['auth:customer'])->group(function(){
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+});
 Route::get('/login', [AuthController::class, 'login'])->name('login');

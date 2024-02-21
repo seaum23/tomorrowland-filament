@@ -74,7 +74,7 @@
                 // slider setup
                 masterslider_ef64.setup("MS659019099ef64", {
                     width: 1400,
-                    height: 768,
+                    height: $(window).height() * (2/3),
                     minHeight: 0,
                     space: 0,
                     start: 1,
@@ -82,7 +82,7 @@
                     swipe: false,
                     mouse: false,
                     keyboard: false,
-                    layout: "fullscreen",
+                    layout: "halfscreen",
                     wheel: false,
                     autoplay: false,
                     instantStartLayers: false,
@@ -104,7 +104,7 @@
                     fullscreenMargin: 0,
                     speed: 20,
                     dir: "h",
-                    responsive: true,
+                    responsive: false,
                     tabletWidth: 768,
                     tabletHeight: null,
                     phoneWidth: 480,
@@ -119,12 +119,12 @@
                 window.masterslider_instances.push(masterslider_ef64);
             });
         </script>
-        <div id="to-bottom" class="to-bottom"><i class="fa fa-angle-down"></i></div>
+        {{-- <div id="to-bottom" class="to-bottom"><i class="fa fa-angle-down"></i></div> --}}
     </section>
     <div class="contents-main" id="contents-main">
         <article id="post-2" class="post-2 page type-page status-publish hentry">
             <div class="entry-content">
-                <div class="vc_row wpb_row vc_row-fluid man-girl vc_custom_1425549921432">
+                <div class="vc_row wpb_row vc_row-fluid man-girl vc_custom_1425549921432" style="height: calc(100vh * (1/3));">
                     <div class="container" style="width: 100%">
                         <div class="row">
                             @foreach ($sports as $sport)
@@ -137,7 +137,7 @@
                                         <div class="vc_column-inner vc_custom_1425464759231">
                                             <div class="wpb_wrapper">
                                                 {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
-                                                <div class="class-content ">
+                                                <div class="class-content modded-class-content">
                                                     <div class="title">
                                                         <h3 class="title-men">{{ $sport->name }}</h3>
                                                     </div>

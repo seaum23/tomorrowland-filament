@@ -29,7 +29,7 @@ return [
 
     'routes' => [
         // The route to redirect to after a successful login
-        'home' => 'filament.customer.pages.dashboard',
+        'home' => 'home',
     ],
 
     'models' => [

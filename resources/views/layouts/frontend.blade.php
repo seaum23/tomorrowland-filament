@@ -910,6 +910,11 @@
                         </ul>
                     </li> --}}
                     {{-- <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li> --}}
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                        <button aria-label="User menu" type="button" class="shrink-0">
+                            <img class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}">
+                        </button>
+                    </li>
                 </ul>
             </div>
             <div class="content-wrapper">
@@ -1035,6 +1040,11 @@
                                         </li> --}}
                                         {{-- <li id="menu-item-595"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li> --}}
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page landing-avater">
+                                            <a href="{{ url('customer/bookings') }}" aria-label="User menu" role="button" type="button" style="margin:23px 0;cursor: pointer;">
+                                                <img style="width: 35px; border-radius: 9999px;" class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}&color=FFFFFF&background={{ config('app.bg') }}">
+                                            </a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>

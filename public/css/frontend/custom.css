@@ -9,3 +9,15 @@
 .vc_col-sm-4:nth-of-type(2) {
     width: 34%;
 }
+
+.modded-class-content{
+    padding: 55px 185px 10px 0;
+}
+
+.megamenu ul.nav-menu>li:hover .landing-avater{
+    color: unset !important;
+}
+
+.megamenu ul.nav-menu>li:before, .megamenu ul.nav-menu>.landing-avater:after{
+    border-bottom: unset !important;
+}
