@@ -112,19 +112,12 @@ class BookingController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $customer = Customer::where('phone', $request->phone)->orWhere('email', $request->email)->first();
         $sport = Sport::find($request->sport)->firstOrFail();
 
-        if($customer === null){
-            $customer = Customer::create($request->safe()->only([
-                'name',
-                'email',
-                'phone',
-            ]));
-        }
-
         Booking::create([
-            'customer_id' => $customer->id,
+            'customer_id' => auth()->id(),
+            'name' => $request->name,
+            'phone' => $request->phone,
             'sport_id' => $sport->id,
             'booking_date' => $request->booking_day,
             'booking_times' => $request->booking_times,

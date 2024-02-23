@@ -186,19 +186,34 @@
                         </div>
                         <div class="col-md-4 col-12">
                             <input type="hidden" name="total_amount" id="total_amount">
-                            <label for="birthday">Total amount:</label>
-                            <div class="price-box" style="margin-bottom: 1rem">
-                                <span class="woocommerce-Price-amount amount">
-                                    <bdi>
-                                        <span id="price_amount">0</span>
-                                        <span class="woocommerce-Price-currencySymbol">taka</span>
-                                    </bdi>
-                                </span>
+                            <div style="display: flex;gap: 50px">
+                                <div>
+                                    <label for="birthday">Total amount:</label>
+                                    <div class="price-box" style="margin-bottom: 1rem">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                <span id="price_amount">0</span>
+                                                <span class="woocommerce-Price-currencySymbol">taka</span>
+                                            </bdi>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="birthday">Advance amount:</label>
+                                    <div class="price-box" style="margin-bottom: 1rem">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                <span id="advance_amount">0</span>
+                                                <span class="woocommerce-Price-currencySymbol">taka</span>
+                                            </bdi>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <label for="phone">Provide informations:</label>
                             <input class="input-text" type="text" id="name" name="name" placeholder="Name" required>
                             <input class="input-text" type="text" id="phone" name="phone" placeholder="Phone number">
-                            <input class="input-text" type="text" id="email" name="email" placeholder="Email" required>
+                            {{-- <input class="input-text" type="text" id="email" name="email" placeholder="Email" required> --}}
                             <button type="submit" class="single_add_to_cart_button button alt btn-cart">Confirm</button>
                         </div>
                     </div>
@@ -230,8 +245,10 @@
                 }else{
                     price -= Number(shift_price)
                 }
-                $('#total_amount').val(price);            
-                $('#price_amount').html(price)
+                $('#total_amount').val(price);
+                $('#price_amount').html(price);
+                let advance_amount = price * 0.3;
+                $('#advance_amount').html(advance_amount);
             });
         })
     });
