@@ -13,7 +13,7 @@ return [
         // ]
         'google' => [
         	'icon' => 'fab-google', // Font Awesome icon class
-        	'label' => 'Google', // The label to display for the provider
+        	'label' => 'Sign in using Google', // The label to display for the provider
             'client_id' => env('GOOGLE_CLIENT_ID'),
             'client_secret' => env('GOOGLE_CLIENT_SECRET'),
             'redirect' => env('GOOGLE_REDIRECT_URL'),
@@ -22,9 +22,9 @@ return [
 
     'view' => [
         // Set the text above the provider list
-        'prompt' => 'Or Login Via',
+        'prompt' => 'Login Via',
         // Or change out the view completely with your own
-        'providers-list' => 'socialment::providers-list',
+        'providers-list' => 'providers-list',
     ],
 
     'routes' => [
