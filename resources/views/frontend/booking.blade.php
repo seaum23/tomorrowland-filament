@@ -36,7 +36,7 @@
     .time-slot:hover {
         color: #000;
         font-weight: bold;
-        background: #ec3642;
+        background: #F59E0B;
         transition: all .3s ease 0s;
         -o-transition: all .3s ease 0s;
         -ms-transition: all .3s ease 0s;
@@ -84,7 +84,7 @@
         margin: 5px;
         float: left;
         box-sizing: border-box;
-        border: 2px solid #ec3642;
+        border: 2px solid #F59E0B;
 
         transition: all .3s ease 0s;
         -o-transition: all .3s ease 0s;
@@ -94,7 +94,7 @@
     }
 
     .article:hover {
-        background: #ec3642;
+        background: #F59E0B;
         transition: all .3s ease 0s;
         -o-transition: all .3s ease 0s;
         -ms-transition: all .3s ease 0s;
@@ -123,7 +123,7 @@
     }
 
     input[type=checkbox]:checked ~ div {
-        background-color: #ec3642;
+        background-color: #F59E0B;
     }
 
 
@@ -180,7 +180,7 @@
                                     </div>
                                 </div>
                                 <div id="shifts-body" class="col-12">
-                                    <p style="font-size: 3.5rem; color: #ec3642">Select a date to see the available slots!</p>
+                                    <p style="font-size: 3.5rem; color: #F59E0B">Select a date to see the available slots!</p>
                                 </div>
                             </div>
                         </div>

@@ -21,3 +21,7 @@
 .megamenu ul.nav-menu>li:before, .megamenu ul.nav-menu>.landing-avater:after{
     border-bottom: unset !important;
 }
+
+.content-main.landing-content{
+    min-height: 330px !important;
+}

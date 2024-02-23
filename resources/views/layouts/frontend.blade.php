@@ -519,7 +519,7 @@
         .vc_custom_1428996205928 {
             margin-top: 0px !important;
             margin-bottom: 0px !important;
-            background-image: url(https://athlete.sdemo.site/wp-content/uploads/2014/12/bg-position-3.jpg?id=1159) !important;
+            /* background-image: url(https://athlete.sdemo.site/wp-content/uploads/2014/12/bg-position-3.jpg?id=1159) !important; */
         }
 
         .vc_custom_1425550204607 {

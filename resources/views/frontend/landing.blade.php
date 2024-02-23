@@ -124,16 +124,12 @@
     <div class="contents-main" id="contents-main">
         <article id="post-2" class="post-2 page type-page status-publish hentry">
             <div class="entry-content">
-                <div class="vc_row wpb_row vc_row-fluid man-girl vc_custom_1425549921432" style="height: calc(100vh * (1/3));">
-                    <div class="container" style="width: 100%">
+                <div class="vc_row wpb_row vc_row-fluid man-girl vc_custom_1425549921432">
+                    <div class="container" style="width: 100%;">
                         <div class="row">
                             @foreach ($sports as $sport)
                                 @if ($sport->show_on_banner)
-                                    <div class="content-main content-main-left wpb_column vc_column_container {{ $sports->count() >= 3 ? "vc_col-sm-4" : "vc_col-sm-6" }}  vc_col-has-fill" style="background-image: linear-gradient(
-                                        rgba(0, 0, 0, 0.3), 
-                                        rgba(0, 0, 0, 0.3)
-                                      ),
-                                      url({{ asset('storage/'.$sport->attachments[0]) }})">
+                                    <div onclick="loadPage('{{ route('book.index', $sport->name) }}')" class="content-main landing-content content-main-left wpb_column vc_column_container {{ $sports->count() >= 3 ? "vc_col-sm-4" : "vc_col-sm-6" }}  vc_col-has-fill" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'.$sport->attachments[0]) }});cursor:pointer;">
                                         <div class="vc_column-inner vc_custom_1425464759231">
                                             <div class="wpb_wrapper">
                                                 {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
@@ -178,62 +174,17 @@
                                 <div class="vc_row wpb_row vc_inner vc_row-fluid about-top">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="wpb_column vc_column_container vc_col-sm-12">
-                                                <div class="vc_column-inner">
-                                                    <div class="wpb_wrapper">
-                                                        <div class="title-page title-about">
-                                                            <h3>About Tomorrowland</h3>
-                                                            <p>Working from home meant we could vary snack and coffee breaks, change our desks or view, goof off, drink on the job, even spend the day in pajamas.</p>
-                                                        </div>
-                                                        <div class="infor-list col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="infor-item box-left">
-                                                                <div class="icon"><i class="fa fa-bolt"></i></div>
-                                                                <div class="infor-item-content">
-                                                                    <h4 class="infor-item-title">Responsive &amp; Retina Ready</h4>
-                                                                    <p>Fusce gravida tortor felis. Ac dictum risus sagittis id morbi posu justo eleifend libero ultricies asunt</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="infor-item box-left">
-                                                                <div class="icon"><i class="fa fa-rocket"></i></div>
-                                                                <div class="infor-item-content">
-                                                                    <h4 class="infor-item-title">Calander And Event Manager</h4>
-                                                                    <p>Fusce gravida tortor felis. Ac dictum risus sagittis id morbi posu justo eleifend libero ultricies asunt</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="infor-item box-left">
-                                                                <div class="icon"><i class="fa fa-globe"></i></div>
-                                                                <div class="infor-item-content">
-                                                                    <h4 class="infor-item-title">Parallax Video Background</h4>
-                                                                    <p>Fusce gravida tortor felis. Ac dictum risus sagittis id morbi posu justo eleifend libero ultricies asunt</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="infor-list col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="infor-item box-right">
-                                                                <div class="icon"><i class="fa fa-play-circle"></i></div>
-                                                                <div class="infor-item-content">
-                                                                    <h4 class="infor-item-title">Video &amp; Images background</h4>
-                                                                    <p>Fusce gravida tortor felis. Ac dictum risus sagittis id morbi posu justo eleifend libero ultricies asunt</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="infor-item box-right">
-                                                                <div class="icon"><i class="fa fa-magic"></i></div>
-                                                                <div class="infor-item-content">
-                                                                    <h4 class="infor-item-title">Unlimited Colors Support</h4>
-                                                                    <p>Fusce gravida tortor felis. Ac dictum risus sagittis id morbi posu justo eleifend libero ultricies asunt</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="infor-item box-right">
-                                                                <div class="icon"><i class="fa fa-cog"></i></div>
-                                                                <div class="infor-item-content">
-                                                                    <h4 class="infor-item-title">Powerful Theme Option</h4>
-                                                                    <p>Fusce gravida tortor felis. Ac dictum risus sagittis id morbi posu justo eleifend libero ultricies asunt</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <video controls width="100%">
+                                                {{-- <source src="/media/cc0-videos/flower.webm" type="video/webm" /> --}}
+                                              
+                                                <source src="{{ asset('assets/landing-video.mp4') }}" type="video/mp4" />
+                                              
+                                                Download the
+                                                {{-- <a href="/media/cc0-videos/flower.webm">WEBM</a> --}}
+                                                {{-- or --}}
+                                                <a href="{{ asset('assets/landing-video.mp4') }}">MP4</a>
+                                                video.
+                                            </video>
                                         </div>
                                     </div>
                                 </div>
