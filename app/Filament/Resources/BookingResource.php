@@ -14,11 +14,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\BookingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Filament\Resources\BookingResource\Widgets\BookingOverview;
+use Filament\Forms\Components\Select;
 
 class BookingResource extends Resource
 {
@@ -38,23 +40,24 @@ class BookingResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('customer.name'),
-                TextColumn::make('customer.phone'),
-                TextColumn::make('customer.email'),
+                TextColumn::make('customer.name')->label('Name'),
+                TextColumn::make('customer.phone')->label('Phone'),
+                TextColumn::make('customer.email')->label('Email'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
                 ->dateTime('Y-m-d'),
-                TextColumn::make('booking_times'),
+                // TextColumn::make('booking_times'),
                 ViewColumn::make('booking_times')->view('filament.tables.columns.booking_times'),
                 TextColumn::make('total_amount'),
-                TextColumn::make('bookingPayment.vendor'),
-                TextColumn::make('bookingPayment.transaction_id')
-                ->copyable()
-                ->copyMessage('Transaction id copied'),
-                TextColumn::make('bookingPayment.payment_date')
-                ->dateTime('Y-m-d'),
-                ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
+                TextColumn::make('advance_amount'),
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
+                // TextColumn::make('bookingPayment.vendor'),
+                // TextColumn::make('bookingPayment.transaction_id')
+                // ->copyable()
+                // ->copyMessage('Transaction id copied'),
+                // TextColumn::make('bookingPayment.payment_date')
+                // ->dateTime('Y-m-d'),
+                // ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
             ])
             ->filters([
                 Filter::make('created_at')
@@ -65,9 +68,44 @@ class BookingResource extends Resource
                     return $query
                     ->when(
                         $data['created_at'],
-                        fn (Builder $query, $date): Builder => $query->whereDate('booking_date', $data),
+                        fn (Builder $query, $data): Builder => $query->whereDate('booking_date', $data),
                     );
-                })
+                }),
+
+                Filter::make('sports')
+                ->form([
+                    Select::make('sports')
+                    ->options([
+                        'cricket' => 'cricket',
+                        'football (s)' => 'football (s)',
+                        'football (l)' => 'football (l)',
+                    ])                        
+                ])
+                ->query(function (Builder $query, array $data): Builder {
+                    return $query
+                    ->when(
+                        $data['sports'],
+                        fn (Builder $query, $date): Builder => $query->whereHas('sport', function($query) use ($data){
+                            $query->where('name', $data);
+                        }),
+                    );
+                }),
+                // SelectFilter::make('sports')
+                // ->options([
+                //     'cricket' => 'cricket',
+                //     'football (s)' => 'football (s)',
+                //     'football (l)' => 'football (l)',
+                // ])
+                // ->reloa
+                // ->query(function (Builder $query, array $data): Builder {
+                //     return $query
+                //     ->when(
+                //         $data['sports'],
+                //         fn (Builder $query, $date): Builder => $query->whereHas(['sport' => function($query) use ($data){
+                //             $query->where('name', $data);
+                //         }]),
+                //     );
+                // })
             ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Action::make('cancel')

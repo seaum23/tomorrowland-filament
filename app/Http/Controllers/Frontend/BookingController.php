@@ -116,6 +116,21 @@ class BookingController extends Controller
         //
     }
 
+    public function bookingTimeUpdate(Request $request, $booking_time_id){
+        $booking_time = BookingTime::findOrFail($booking_time_id);
+        if(isset($request->confirm)){
+            $booking_time->status = 1;
+            $booking_time->save();
+        }
+
+        if(isset($request->reject)){
+            $booking_time->status = 2;
+            $booking_time->save();
+        }
+
+        return back();
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -131,6 +146,7 @@ class BookingController extends Controller
             'booking_date' => $request->booking_day,
             'booking_times' => $request->booking_times,
             'total_amount' => $request->total_amount,
+            'advance_amount' => $request->advance_amount * Booking::ADVANCE,
             'status' => 1
         ]);
 

@@ -39,3 +39,5 @@ Route::middleware(['auth:customer'])->group(function(){
         return view('frontend.success');
     })->name('success');
 });
+
+Route::post('book-time/{booking_time_id}/update', [BookingController::class, 'bookingTimeUpdate'])->name('book.time.update');

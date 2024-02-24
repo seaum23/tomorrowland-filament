@@ -9,6 +9,8 @@ class Booking extends Model
 {
     use HasFactory;
 
+    const ADVANCE = 30 / 100;
+
     protected $casts = [
         'booking_date' => 'datetime',
         'booking_times' => 'array'
