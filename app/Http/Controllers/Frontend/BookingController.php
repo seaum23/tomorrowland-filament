@@ -10,6 +10,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Booking\StoreRequest;
+use App\Models\BookingTime;
 
 class BookingController extends Controller
 {
@@ -30,13 +31,19 @@ class BookingController extends Controller
     public function availableShifts(Request $request){
         $shifts = Shift::get();
         $booking_date = new Carbon($request->booking_date);
-        $bookings = Booking::where('booking_date', $booking_date)->where('status', '!=', 3)->get();
+        $bookings = Booking::with('bookingTimes')->where('booking_date', $booking_date)->where('status', '!=', 3)->get();
 
-        $times = $bookings->pluck('booking_times')->toArray();
         $only_booked_times = [];
-        foreach($times as $time){
-            $only_booked_times = array_merge($only_booked_times, $time);
+        if($bookings->isNotEmpty()){
+            foreach($bookings as $booking){
+                $times = $booking->bookingTimes->pluck('time')->toArray();
+                // foreach($times as $time){
+                $only_booked_times = array_merge($only_booked_times, $times);
+                // }
+            }
         }
+
+        // dd($only_booked_times);
 
         $html = "";
         foreach ($shifts as $shift){
@@ -69,20 +76,22 @@ class BookingController extends Controller
                     HTML;
                 }
             }else if($start_time > $end_time){
-                while ($end_time < $start_time) {
+                while ($start_time->format('H:i:s') != $end_time->format('H:i:s')) {
+                    // dd($only_booked_times);
+                    // var_dump($end_time->format('H:i:s'));
                     $disabled = "";
 
-                    if(in_array($end_time->format('H:i:s'), $only_booked_times)){
+                    if(in_array($start_time->format('H:i:s'), $only_booked_times)){
                         $disabled = "disabled";
                     }
 
                     $html .= <<<HTML
                     <div class="b-col">
                         <div class="article {$disabled}">
-                            <input class="booking-times" data-price={$shift->hourly_rate} type="checkbox" name="booking_times[]" value="{$end_time->format('H:i:s')}" {$disabled}/>
+                            <input class="booking-times" data-price={$shift->hourly_rate} type="checkbox" name="booking_times[]" value="{$start_time->format('H:i:s')}" {$disabled}/>
                             <div>
                                 <span>
-                                    {$end_time->format('h:i a')} - {$end_time->addHour()->format('h:i a')}
+                                    {$start_time->format('h:i a')} - {$start_time->addHour()->format('h:i a')}
                                 </span>
                             </div>
                         </div>
@@ -112,9 +121,9 @@ class BookingController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $sport = Sport::find($request->sport)->firstOrFail();
+        $sport = Sport::findOrFail($request->sport);
 
-        Booking::create([
+        $booking = Booking::create([
             'customer_id' => auth()->id(),
             'name' => $request->name,
             'phone' => $request->phone,
@@ -124,6 +133,15 @@ class BookingController extends Controller
             'total_amount' => $request->total_amount,
             'status' => 1
         ]);
+
+        foreach($request->booking_times as $time){
+            BookingTime::create([
+                'booking_id' => $booking->id,
+                'booking_date' => $request->booking_day,
+                'time' => $time,
+                'status' => 0
+            ]);
+        }
 
         return redirect(route('success'));
     }

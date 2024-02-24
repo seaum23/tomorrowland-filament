@@ -9,13 +9,16 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Enums\FiltersLayout;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\BookingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\BookingResource\RelationManagers;
+use App\Filament\Resources\BookingResource\Widgets\BookingOverview;
 
 class BookingResource extends Resource
 {
@@ -54,8 +57,18 @@ class BookingResource extends Resource
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
             ])
             ->filters([
-                //
-            ])
+                Filter::make('created_at')
+                ->form([
+                    Forms\Components\DatePicker::make('created_at')->label('Booking date')->default(now()),
+                ])
+                ->query(function (Builder $query, array $data): Builder {
+                    return $query
+                    ->when(
+                        $data['created_at'],
+                        fn (Builder $query, $date): Builder => $query->whereDate('booking_date', $data),
+                    );
+                })
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Action::make('cancel')
                 ->action(fn (Booking $record) => $record->update(['status' => 3]))
@@ -89,5 +102,12 @@ class BookingResource extends Resource
     public static function canCreate(): bool
     {
         return false;
+    }    
+
+    public static function getWidgets(): array
+    {
+        return [
+            BookingOverview::class,
+        ];
     }
 }

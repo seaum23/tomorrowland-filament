@@ -25,4 +25,8 @@ class Booking extends Model
     public function bookingPayment(){
         return $this->hasOne(BookingPayment::class);
     }
+
+    public function bookingTimes(){
+        return $this->hasMany(BookingTime::class);
+    }
 }

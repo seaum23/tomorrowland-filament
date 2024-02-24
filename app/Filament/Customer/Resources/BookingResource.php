@@ -61,15 +61,7 @@ class BookingResource extends Resource
                 // ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
             ])
             ->filters([
-                // Filter::make('created_at')
-                // ->label('Booking date')
-                // ->form([
-                //     Forms\Components\DatePicker::make('created_at')->default(now()),
-                // ])
-                // ->query(function (Builder $query, array $data): Builder {
-                //     return $query
-                //     ->whereDate('created_at', $data);
-                // })
+                //
             ])
             ->actions([
                 Action::make('cancel')
@@ -139,12 +131,5 @@ class BookingResource extends Resource
     public static function canCreate(): bool
     {
         return false;
-    }
-
-    public static function getWidgets(): array
-    {
-        return [
-            BookingOverview::class,
-        ];
     }
 }

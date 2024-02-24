@@ -10,8 +10,6 @@ use App\Filament\Customer\Resources\BookingResource\Widgets\BookingOverview;
 
 class ListBookings extends ListRecords
 {
-    use ExposesTableToWidgets;
-    
     protected static string $resource = BookingResource::class;
 
     protected function getHeaderActions(): array

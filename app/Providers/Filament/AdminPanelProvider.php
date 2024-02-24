@@ -51,6 +51,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->sidebarWidth('12rem')
             ->authMiddleware([
                 Authenticate::class,
             ])
