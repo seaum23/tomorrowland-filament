@@ -109,4 +109,9 @@ class ShiftResource extends Resource
             'edit' => Pages\EditShift::route('/{record}/edit'),
         ];
     }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasPermission('shift');
+    }
 }

@@ -48,4 +48,21 @@ class User extends Authenticatable
     {
         return str_ends_with($this->email, '@admin.com');
     }
+
+    public function permissions(){
+        return $this->belongsToMany(Permission::class)->using(PermissionUser::class);
+    }
+
+    public function hasPermission($permission_name): bool{
+        if($this->is_admin){
+            return true;
+        }
+
+        foreach($this->permissions as $permission){
+            if($permission->name == $permission_name){
+                return true;
+            }
+        }
+        return false;
+    }
 }

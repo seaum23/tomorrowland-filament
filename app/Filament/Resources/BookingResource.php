@@ -148,4 +148,9 @@ class BookingResource extends Resource
             BookingOverview::class,
         ];
     }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasPermission('booking');
+    }
 }

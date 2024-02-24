@@ -101,4 +101,9 @@ class SportResource extends Resource
             'edit' => Pages\EditSport::route('/{record}/edit'),
         ];
     }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasPermission('sport');
+    }
 }
