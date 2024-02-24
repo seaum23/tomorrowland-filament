@@ -16,9 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Booking::class);
             $table->string('vendor');
-            $table->string('transaction_id');
-            $table->string('note')->nullable();
-            $table->date('payment_date')->nullable();
+            $table->string('last_4_digit');
             $table->enum('status', ['submitted', 'confirmed', 'rejected']);
             $table->longText('attachments');
             $table->timestamps();

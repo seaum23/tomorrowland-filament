@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Forms\Components\TextInput;
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Customer\Resources\BookingResource\Pages;
 use App\Filament\Customer\Resources\BookingResource\RelationManagers;
+use App\Filament\Customer\Resources\BookingResource\Widgets\BookingOverview;
 
 class BookingResource extends Resource
 {
@@ -38,26 +40,36 @@ class BookingResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('customer.name'),
-                TextColumn::make('customer.phone'),
-                TextColumn::make('customer.email'),
+                TextColumn::make('customer.name')->label('Name'),
+                TextColumn::make('customer.phone')->label('Number'),
+                // TextColumn::make('customer.email'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
-                ->dateTime('Y-m-d'),
-                TextColumn::make('booking_times'),
-                ViewColumn::make('booking_times')->view('filament.tables.columns.booking_times'),
-                TextColumn::make('total_amount'),
-                TextColumn::make('bookingPayment.vendor'),
-                TextColumn::make('bookingPayment.transaction_id')
-                ->copyable()
-                ->copyMessage('Transaction id copied'),
-                TextColumn::make('bookingPayment.payment_date')
-                ->dateTime('Y-m-d'),
-                ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
+                ->dateTime('Y-m-d')
+                ->sortable(),
+                // TextColumn::make('booking_times'),
+                ViewColumn::make('booking_times')->view('filament.tables.columns.booking_times')->label('Slots'),
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
+                TextColumn::make('total_amount')->label('Total'),
+                TextColumn::make('advance'),
+                // TextColumn::make('bookingPayment.vendor'),
+                // TextColumn::make('bookingPayment.transaction_id')
+                // ->copyable()
+                // ->copyMessage('Transaction id copied'),
+                // TextColumn::make('bookingPayment.payment_date')
+                // ->dateTime('Y-m-d'),
+                // ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
             ])
             ->filters([
-                //
+                // Filter::make('created_at')
+                // ->label('Booking date')
+                // ->form([
+                //     Forms\Components\DatePicker::make('created_at')->default(now()),
+                // ])
+                // ->query(function (Builder $query, array $data): Builder {
+                //     return $query
+                //     ->whereDate('created_at', $data);
+                // })
             ])
             ->actions([
                 Action::make('cancel')
@@ -67,30 +79,29 @@ class BookingResource extends Resource
                 ->color('danger')
                 ->visible(fn (Booking $record): bool => $record->status == 1),
                 Action::make('submitPaymentInfo')
-                ->form([                    
-                    TextInput::make('transaction_id')
-                    ->required()
-                    ->columnSpan(1),
+                ->form([
                     TextInput::make('vendor')
+                    ->label('Bkash/Nagad/Other')
+                    ->required()
+                    ->columnSpan(2),
+                    TextInput::make('last_4_digit')
                     ->required()
                     ->columnSpan(1),
-                    DatePicker::make('payment_date')
-                    ->required()
-                    ->columnSpan(2),
-                    TextInput::make('note')
-                    ->columnSpan(2),
+                    // DatePicker::make('payment_date')
+                    // ->required()
+                    // ->columnSpan(2),
+                    // TextInput::make('note')
+                    // ->columnSpan(2),
                     FileUpload::make('attachments')
                     ->multiple()
-                    ->columnSpan(2)
+                    ->columnSpan(3)
                 ])
                 ->button()
                 ->visible(fn (Booking $record): bool => $record->status == 1)
                 ->action(function (array $data, Booking $record): void {
                     $record->bookingPayment()->create([
                         'vendor' => $data['vendor'],
-                        'transaction_id' => $data['transaction_id'],
-                        'note' => $data['note'],
-                        'payment_date' => $data['payment_date'],
+                        'last_4_digit' => $data['last_4_digit'],
                         'attachments' => $data['attachments'],
                     ]);
                     $record->status = 2;
@@ -102,6 +113,11 @@ class BookingResource extends Resource
             ])
             ->defaultSort('created_at', 'desc');
 
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return static::getModel()::query()->where('customer_id', auth()->id());
     }
 
     public static function getRelations(): array
@@ -123,5 +139,12 @@ class BookingResource extends Resource
     public static function canCreate(): bool
     {
         return false;
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            BookingOverview::class,
+        ];
     }
 }

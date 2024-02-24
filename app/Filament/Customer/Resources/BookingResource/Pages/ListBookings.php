@@ -2,12 +2,16 @@
 
 namespace App\Filament\Customer\Resources\BookingResource\Pages;
 
-use App\Filament\Customer\Resources\BookingResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Pages\Concerns\ExposesTableToWidgets;
+use App\Filament\Customer\Resources\BookingResource;
+use App\Filament\Customer\Resources\BookingResource\Widgets\BookingOverview;
 
 class ListBookings extends ListRecords
 {
+    use ExposesTableToWidgets;
+    
     protected static string $resource = BookingResource::class;
 
     protected function getHeaderActions(): array
