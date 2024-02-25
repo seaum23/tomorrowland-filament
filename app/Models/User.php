@@ -53,6 +53,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Permission::class)->using(PermissionUser::class);
     }
 
+    public function sports(){
+        return $this->belongsToMany(Sport::class)->using(SportUser::class);
+    }
+
     public function hasPermission($permission_name): bool{
         if($this->is_admin){
             return true;

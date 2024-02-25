@@ -23,6 +23,7 @@ use App\Filament\Resources\BookingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Filament\Resources\BookingResource\Widgets\BookingOverview;
+use App\Models\Sport;
 
 class BookingResource extends Resource
 {
@@ -77,11 +78,7 @@ class BookingResource extends Resource
                 Filter::make('sports')
                 ->form([
                     Select::make('sports')
-                    ->options([
-                        'cricket' => 'cricket',
-                        'football (s)' => 'football (s)',
-                        'football (l)' => 'football (l)',
-                    ])                        
+                    ->options(auth()->user()->sports()->get()->pluck('name', 'id'))
                 ])
                 ->query(function (Builder $query, array $data): Builder {
                     return $query

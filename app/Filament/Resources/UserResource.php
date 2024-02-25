@@ -50,6 +50,13 @@ class UserResource extends Resource
                 ->preload()
                 ->required()
                 ->columnSpan(2)
+                ->multiple(),                
+                Select::make('sports')
+                ->relationship(titleAttribute: 'name')
+                ->searchable()
+                ->preload()
+                ->required()
+                ->columnSpan(2)
                 ->multiple()
             ]);
     }
@@ -63,6 +70,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 ViewColumn::make('permissions')->view('filament.tables.columns.permissions'),
+                ViewColumn::make('sports')->view('filament.tables.columns.sports'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
