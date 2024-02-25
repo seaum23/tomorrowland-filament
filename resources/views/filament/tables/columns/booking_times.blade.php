@@ -1,7 +1,7 @@
 <div class="flex flex-col">
     @foreach ($getRecord()->bookingTimes as $item)
         @if ($item->status == 0)
-            <form method="post" action="{{ route('book.time.update', $item->id) }}">
+            <form class="m-1" method="post" action="{{ route('book.time.update', $item->id) }}">
                 @csrf
                 <x-filament::modal>
                     <x-slot name="trigger">
