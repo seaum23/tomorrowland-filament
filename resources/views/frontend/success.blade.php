@@ -1,8 +1,9 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <section class="slide-container to-top">
-        <div id="P_MS659019099ef64"  class="master-slider-parent ms-parent-id-5" style>
+    <div>
+        <section class="">
+        <div id="P_MS659019099ef64"  class="master-slider-parent ms-parent-id-5" style="margin-bottom: 80px">
             <div id="MS659019099ef64" class="master-slider ms-skin-default">
                     <div class="ms-slide" data-delay="5" data-fill-mode="fill">
                         <div class="ms-pattern ms-patt-1" style></div>
@@ -111,7 +112,8 @@
             });
         </script>
         {{-- <div id="to-bottom" class="to-bottom"><i class="fa fa-angle-down"></i></div> --}}
-    </section>
-    <div class="contents-main" id="contents-main">
+        </section>
+
+        <div  style="margin-bottom: 80px"></div>
     </div>
 @endsection
