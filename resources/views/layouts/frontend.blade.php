@@ -922,8 +922,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-2 col-sm-4 col-xs-4 logo">
-                                <a href="{{ route('home') }}"><img src="https://athlete.sdemo.site/wp-content/themes/athlete/images/logo.png"
-                                        alt="Logo" /></a>
+                                <a href="{{ route('home') }}"><img src="{{ asset('assets/logo.png') }}" alt="Logo" /></a>
                             </div>
                             <div class="col-md-9 nav-container">
 
@@ -1038,8 +1037,7 @@
                                                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item-353"><a href="?p=347">Blog Detail</a></li>
                                             </ul>
                                         </li> --}}
-                                        {{-- <li id="menu-item-595"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li> --}}
+                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page landing-avater">
                                             <a href="{{ url('customer/bookings') }}" aria-label="User menu" role="button" type="button" style="margin:23px 0;cursor: pointer;">
                                                 <img style="width: 35px; border-radius: 9999px;" class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}&color=FFFFFF&background={{ config('app.bg') }}">

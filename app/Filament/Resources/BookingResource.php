@@ -10,6 +10,9 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Filters\Filter;
+use Illuminate\Contracts\View\View;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Columns\ImageColumn;
@@ -20,7 +23,6 @@ use App\Filament\Resources\BookingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Filament\Resources\BookingResource\Widgets\BookingOverview;
-use Filament\Forms\Components\Select;
 
 class BookingResource extends Resource
 {
@@ -49,7 +51,7 @@ class BookingResource extends Resource
                 // TextColumn::make('booking_times'),
                 ViewColumn::make('booking_times')->view('filament.tables.columns.booking_times'),
                 TextColumn::make('total_amount'),
-                TextColumn::make('advance_amount'),
+                TextColumn::make('advance'),
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
                 // TextColumn::make('bookingPayment.vendor'),
                 // TextColumn::make('bookingPayment.transaction_id')
@@ -114,6 +116,13 @@ class BookingResource extends Resource
                 ->button()
                 ->color('danger')
                 ->visible(fn (Booking $record): bool => $record->status == 1),
+                ViewAction::make()
+                ->modalContent(fn (Booking $record): View => view(
+                    'filament.resources.booking-resource.payment_view',
+                    ['booking' => $record],
+                ))
+                ->modalHeading("Booking payment")
+                ->label("Booking payment"),
             ])
             ->bulkActions([
 
@@ -134,6 +143,7 @@ class BookingResource extends Resource
             'index' => Pages\ListBookings::route('/'),
             'create' => Pages\CreateBooking::route('/create'),
             // 'edit' => Pages\EditBooking::route('/{record}/edit'),
+            // 'view' => Pages\ViewPayment::route('/{record}'),
         ];
     }
 
