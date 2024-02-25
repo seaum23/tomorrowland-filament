@@ -248,7 +248,7 @@
                 $('#total_amount').val(price);
                 $('#price_amount').html(price);
                 let advance_amount = price * 0.3;
-                $('#advance_amount').html(advance_amount);
+                $('#advance_amount').html((advance_amount).toFixed());
             });
         })
     });
