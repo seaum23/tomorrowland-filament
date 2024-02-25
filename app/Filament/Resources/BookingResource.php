@@ -85,7 +85,7 @@ class BookingResource extends Resource
                     ->when(
                         $data['sports'],
                         fn (Builder $query, $date): Builder => $query->whereHas('sport', function($query) use ($data){
-                            $query->where('name', $data);
+                            $query->where('id', $data);
                         }),
                     );
                 }),
@@ -154,6 +154,11 @@ class BookingResource extends Resource
         return [
             BookingOverview::class,
         ];
+    }    
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->whereIn('sport_id', auth()->user()->sports()->get()->pluck('id'));
     }
 
     public static function canViewAny(): bool

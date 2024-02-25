@@ -32,5 +32,13 @@
 }
 
 .vc_custom_1428996205928{
-    background-image: url(https://athlete.sdemo.site/wp-content/uploads/2014/12/bg-position-3.jpg?id=1159) !important
+    background-image: url('/assets/landing-bg.jpg') !important
+}
+
+.megamenu ul.nav-menu>li:after{
+    left: 0;
+}
+
+.megamenu ul.nav-menu>li:hover:before, .megamenu ul.nav-menu>li:hover:after, .megamenu ul.nav-menu>li.active:before, .megamenu ul.nav-menu>li.active:after, .megamenu ul.nav-menu>li:hover:before, .megamenu ul.nav-menu>li:hover:after{
+    width: 100%;
 }

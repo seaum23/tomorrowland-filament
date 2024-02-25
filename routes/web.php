@@ -38,6 +38,8 @@ Route::middleware(['auth:customer'])->group(function(){
     Route::get('success', function(){
         return view('frontend.success');
     })->name('success');
+
+    Route::view('contact-us','frontend.contact_us')->name('contact.us');
 });
 
 Route::post('book-time/{booking_time_id}/update', [BookingController::class, 'bookingTimeUpdate'])->name('book.time.update');

@@ -930,9 +930,9 @@
                                     role="navigation">
                                     <ul id="menu-main-menu-1"
                                         class="nav-menu">
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('home') }}">Home</a></li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595 {{ request()->is('/') ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
                                         @foreach ($sports as $sport)
-                                            <li class="menu-item menu-item-type-post_type menu-item-objec   t-page"><a href="{{ route('book.index', $sport->name) }}">{{ $sport->name }}</a></li>                        
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->is("book/$sport->name") ? 'active' : '' }} "><a href="{{ route('book.index', $sport->name) }}">{{ $sport->name }}</a></li>                        
                                         @endforeach
                                         {{-- <li id="menu-item-37"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-has-children menu-item-37 selected active "><a href="https://athlete.sdemo.site/">Home<i class="icon-arrow"></i></a>
@@ -1037,7 +1037,7 @@
                                                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item-353"><a href="?p=347">Blog Detail</a></li>
                                             </ul>
                                         </li> --}}
-                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li>
+                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('contact.us') }}">Contact Us</a></li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page landing-avater">
                                             <a href="{{ url('customer/bookings') }}" aria-label="User menu" role="button" type="button" style="margin:23px 0;cursor: pointer;">
                                                 <img style="width: 35px; border-radius: 9999px;" class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}&color=FFFFFF&background={{ config('app.bg') }}">
