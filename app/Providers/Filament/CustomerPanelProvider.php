@@ -6,6 +6,7 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
+use Filament\Navigation\MenuItem;
 use App\Filament\Pages\Auth\Login;
 use Filament\Support\Colors\Color;
 use Filament\Support\Enums\MaxWidth;
@@ -29,7 +30,7 @@ class CustomerPanelProvider extends PanelProvider
             ->path('customer')
             ->login(Login::class)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => "#a0dff3",
             ])
             ->discoverResources(in: app_path('Filament/Customer/Resources'), for: 'App\\Filament\\Customer\\Resources')
             ->discoverPages(in: app_path('Filament/Customer/Pages'), for: 'App\\Filament\\Customer\\Pages')
@@ -62,6 +63,12 @@ class CustomerPanelProvider extends PanelProvider
             ])
             ->viteTheme('resources/css/filament/customer/theme.css')
             ->sidebarCollapsibleOnDesktop()
-            ->maxContentWidth(MaxWidth::Full);
+            ->maxContentWidth(MaxWidth::Full)
+            ->userMenuItems([
+                MenuItem::make()
+                    ->label('Home')
+                    ->url(fn (): string => '/')
+                    ->icon('heroicon-o-home'),
+            ]);
     }
 }

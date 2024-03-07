@@ -187,6 +187,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
-    'bg' => 'F59E0B'
+    'bg' => 'fc766a'
 
 ];

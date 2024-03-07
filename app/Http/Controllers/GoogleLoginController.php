@@ -71,7 +71,7 @@ class GoogleLoginController extends SocialmentController
 
             $plugin->executePreLogin($connectedAccount);
 
-            auth()->guard('customer')->login($connectedAccount->user);
+            auth()->guard('customer')->login($connectedAccount->user, true);
 
             $plugin->executePostLogin($connectedAccount);
 
