@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Booking\StoreRequest;
 use App\Models\BookingTime;
+use Illuminate\Support\Facades\Session;
 
 class BookingController extends Controller
 {
@@ -146,12 +147,13 @@ class BookingController extends Controller
             'booking_date' => $request->booking_day,
             'booking_times' => $request->booking_times,
             'total_amount' => $request->total_amount,
-            'advance' => $request->advance * Booking::ADVANCE,
+            'advance' => $request->total_amount * Booking::ADVANCE,
             'status' => 1
         ]);
 
+        $times = [];
         foreach($request->booking_times as $time){
-            BookingTime::create([
+            $times = BookingTime::create([
                 'booking_id' => $booking->id,
                 'booking_date' => $request->booking_day,
                 'time' => $time,
@@ -159,6 +161,7 @@ class BookingController extends Controller
             ]);
         }
 
+        Session::flash('booking', $booking->id);
         return redirect(route('success'));
     }
 

@@ -118,8 +118,11 @@ class BookingResource extends Resource
                     'filament.resources.booking-resource.payment_view',
                     ['booking' => $record],
                 ))
-                ->modalHeading("Booking payment")
-                ->label("Booking payment"),
+                ->modalHeading("Booking payment")                
+                ->button()
+                ->icon('')
+                ->tooltip('Payment')
+                ->label("$"),
             ])
             ->bulkActions([
 

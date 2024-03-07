@@ -8,6 +8,7 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use App\Filament\Pages\Auth\Login;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -60,6 +61,7 @@ class CustomerPanelProvider extends PanelProvider
                 \ChrisReedIO\Socialment\SocialmentPlugin::make(),
             ])
             ->viteTheme('resources/css/filament/customer/theme.css')
-            ->sidebarCollapsibleOnDesktop();
+            ->sidebarCollapsibleOnDesktop()
+            ->maxContentWidth(MaxWidth::Full);
     }
 }

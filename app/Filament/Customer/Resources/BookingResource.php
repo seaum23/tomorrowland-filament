@@ -48,7 +48,7 @@ class BookingResource extends Resource
                 ->dateTime('Y-m-d')
                 ->sortable(),
                 // TextColumn::make('booking_times'),
-                ViewColumn::make('booking_times')->view('filament.tables.columns.booking_times')->label('Slots'),
+                ViewColumn::make('booking_times')->view('filament.tables.columns.booking_times_customer')->label('Slots'),
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
                 TextColumn::make('total_amount')->label('Total'),
                 TextColumn::make('advance'),
@@ -89,7 +89,7 @@ class BookingResource extends Resource
                     ->columnSpan(3)
                 ])
                 ->button()
-                ->visible(fn (Booking $record): bool => $record->status == 1)
+                ->visible(fn (Booking $record): bool => $record->status == 1 OR  $record->status == 4)
                 ->action(function (array $data, Booking $record): void {
                     $record->bookingPayment()->create([
                         'vendor' => $data['vendor'],

@@ -6,7 +6,9 @@ use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BookingController;
+use App\Models\Booking;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,12 @@ Route::middleware(['auth:customer'])->group(function(){
     Route::get('book/{sports_name}', [BookingController::class, 'index'])->name('book.index');
     Route::post('confirm-booking', [BookingController::class, 'store'])->name('book.store');
     Route::get('success', function(){
-        return view('frontend.success');
+        if(Session::get('booking') === null){
+            return redirect(route('home'));
+        }
+
+        $booking = Booking::with('bookingTimes')->find(Session::get('booking'));
+        return view('frontend.success', compact('booking'));
     })->name('success');
 
     Route::view('contact-us','frontend.contact_us')->name('contact.us');

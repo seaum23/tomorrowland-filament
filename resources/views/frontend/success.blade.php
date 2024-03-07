@@ -16,6 +16,28 @@
                             title
                             data-src="{{asset('storage/'.$sport->attachments[1])}}" /> --}}
                             {{-- data-src="https://athlete.sdemo.site/wp-content/uploads/2014/12/bg_2.jpg" /> --}}
+                        
+                        <div class="ms-layer msp-cn-5-3"
+                            style
+                            data-effect="front(long)" 
+                            data-duration="800" 
+                            data-delay="0" 
+                            data-hide-effect="fade"
+                            data-offset-x="108"
+                            data-offset-y="170"
+                            data-origin="ml">
+                            Time: @foreach ($booking->bookingTimes as $idx => $time) <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">{{ \Carbon\Carbon::createFromFormat("H:i:s", $time->time)->format('h:i a') }}</span> @endforeach</div>
+                        
+                        <div class="ms-layer msp-cn-5-3"
+                            style
+                            data-effect="front(long)" 
+                            data-duration="800" 
+                            data-delay="0" 
+                            data-hide-effect="fade"
+                            data-offset-x="108"
+                            data-offset-y="130"
+                            data-origin="ml">
+                            Date: <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">{{ $booking->booking_date->format('Y-m-d') }}</span></div>
                         <div class="ms-layer msp-cn-5-3"
                             style
                             data-effect="front(long)" 
@@ -25,7 +47,18 @@
                             data-offset-x="108"
                             data-offset-y="90"
                             data-origin="ml">
-                            Please complete your payment</div>
+                            Advance amount: <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">৳{{ $booking->advance }}</span></div>
+                            <hr>
+                        <div class="ms-layer msp-cn-5-3"
+                            style
+                            data-effect="front(long)" 
+                            data-duration="800" 
+                            data-delay="0" 
+                            data-hide-effect="fade"
+                            data-offset-x="108"
+                            data-offset-y="50"
+                            data-origin="ml">
+                            Total amount: <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">৳{{ $booking->total_amount }}</span></div>
                         <div class="ms-layer  msp-cn-5-2"
                             style
                             data-effect="front(long)" 

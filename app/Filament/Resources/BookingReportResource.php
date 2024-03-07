@@ -111,7 +111,13 @@ class BookingReportResource extends Resource
                 // })
             ], layout: FiltersLayout::AboveContent)
             ->actions([
-                Action::make('cancel')
+                Action::make('accept')
+                ->action(fn (Booking $record) => $record->update(['status' => 4]))
+                ->requiresConfirmation()
+                ->button()
+                ->color('success')
+                ->visible(fn (Booking $record): bool => $record->status == 1),
+                Action::make('reject')
                 ->action(fn (Booking $record) => $record->update(['status' => 3]))
                 ->requiresConfirmation()
                 ->button()
@@ -123,12 +129,16 @@ class BookingReportResource extends Resource
                     ['booking' => $record],
                 ))
                 ->modalHeading("Payment")
-                ->label("Payment"),
+                ->button()
+                ->icon('')
+                ->tooltip('Payment')
+                ->label("$"),
             ])
             ->bulkActions([
 
             ])
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->recordAction(null);
     }
 
     public static function getRelations(): array
