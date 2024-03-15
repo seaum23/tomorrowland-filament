@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('booking_date');
             $table->json('booking_times');
             $table->double('total_amount');
-            $table->unsignedTinyInteger('status');
+            $table->unsignedTinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
