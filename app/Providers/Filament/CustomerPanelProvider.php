@@ -30,7 +30,7 @@ class CustomerPanelProvider extends PanelProvider
             ->path('customer')
             ->login(Login::class)
             ->colors([
-                'primary' => "#a0dff3",
+                'primary' => "#9ED458",
             ])
             ->discoverResources(in: app_path('Filament/Customer/Resources'), for: 'App\\Filament\\Customer\\Resources')
             ->discoverPages(in: app_path('Filament/Customer/Pages'), for: 'App\\Filament\\Customer\\Pages')
