@@ -40,7 +40,7 @@ class BookingResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('customer.name')->label('Name'),
+                TextColumn::make('name')->label('Name'),
                 TextColumn::make('customer.phone')->label('Number'),
                 // TextColumn::make('customer.email'),
                 TextColumn::make('sport.name'),

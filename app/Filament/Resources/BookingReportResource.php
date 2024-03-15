@@ -51,7 +51,7 @@ class BookingReportResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('customer.name')->label('Name'),
+                TextColumn::make('name')->label('Name'),
                 TextColumn::make('customer.phone')->label('Phone'),
                 TextColumn::make('customer.email')->label('Email'),
                 TextColumn::make('sport.name'),
