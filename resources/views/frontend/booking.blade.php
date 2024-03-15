@@ -180,7 +180,7 @@
                                     </div>
                                 </div>
                                 <div id="shifts-body" class="col-12">
-                                    <p style="font-size: 3.5rem; color: #fc766a">Select a date to see the available slots!</p>
+                                    <p style="font-size: 3.5rem; color: #fc766a;line-height: normal">Select a date to see the available slots!</p>
                                 </div>
                             </div>
                         </div>

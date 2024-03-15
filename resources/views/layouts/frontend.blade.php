@@ -910,10 +910,12 @@
                         </ul>
                     </li> --}}
                     {{-- <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://athlete.sdemo.site/contact-us/">Contact Us</a></li> --}}
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                        <button aria-label="User menu" type="button" class="shrink-0">
-                            <img class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}">
-                        </button>
+                    <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('contact.us') }}">Contact Us</a></li>
+                    <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="#">About Us</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page landing-avater">
+                        <a href="{{ url('customer/bookings') }}" aria-label="User menu" role="button" type="button" style="margin:23px 0;cursor: pointer;">
+                            <img style="width: 35px; border-radius: 9999px;" class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}&color=FFFFFF&background={{ config('app.bg') }}">
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -1038,6 +1040,7 @@
                                             </ul>
                                         </li> --}}
                                         <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('contact.us') }}">Contact Us</a></li>
+                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('contact.us') }}">About Us</a></li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page landing-avater">
                                             <a href="{{ url('customer/bookings') }}" aria-label="User menu" role="button" type="button" style="margin:23px 0;cursor: pointer;">
                                                 <img style="width: 35px; border-radius: 9999px;" class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}&color=FFFFFF&background={{ config('app.bg') }}">
@@ -1065,18 +1068,18 @@
                             <div class="textwidget">
                                 <div class="copy-right">
                                     <div class="footer-right">
-                                        <div class="line1">Copyright &copy; 2016 <a href="#"> Athlete Fitness</a></div>
-                                        <div class="line2">Designed and development by <a href="https://sfwebservice.com/"
+                                        <div class="line1">Copyright &copy; {{ now()->format('Y') }} <a href="#"> Tomorrowland</a></div>
+                                        {{-- <div class="line2">Designed and development by <a href="https://sfwebservice.com/"
                                                 target="_blank"
                                                 class="theme-color"
-                                                rel="noopener">SFThemes</a></div>
+                                                rel="noopener">SFThemes</a></div> --}}
                                     </div>
                                 </div>
                                 <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-whatsapp"></i></a>
+                                    <a href="https://www.facebook.com/TomorrowLandctg"><i class="fa fa-facebook"></i></a>
+                                    {{-- <a href="#"><i class="fa fa-twitter"></i></a> --}}
+                                    {{-- <a href="#"><i class="fa fa-google-plus"></i></a> --}}
+                                    {{-- <a href="#"><i class="fa fa-whatsapp"></i></a> --}}
                                 </div>
                             </div>
                         </div>
@@ -1087,16 +1090,19 @@
                             </div>
                             <div class="textwidget">
                                 <p>
-                                    Room 1214&nbsp; #187 Tay Son Building, Dong Da Distr<br>
-                                    Ha Noi, Vietnam<br>
-                                    Phone : +84 4 22414757<br>
-                                    Email : <a href="/cdn-cgi/l/email-protection"
+                                    HALISHAHAR BEACH ROAD<br>
+                                    CHITTAGONG, BANGLADESH, 4000<br>
+                                    Chittagong, Chittagong Division, Bangladesh<br>
+                                    {{-- Room 1214&nbsp; #187 Tay Son Building, Dong Da Distr<br>
+                                    Ha Noi, Vietnam --}}
+                                    Phone : 01306-260750<br>
+                                    Email : <a href="mailto:tomorrowlandctg@gmail.com"
                                         class="__cf_email__"
-                                        data-cfemail="9af3f4edfbecffeef2fff7ffe9dafdf7fbf3f6b4f9f5f7">[email&#160;protected]</a>
+                                        data-cfemail="9af3f4edfbecffeef2fff7ffe9dafdf7fbf3f6b4f9f5f7">tomorrowlandctg@gmail.com</a>
                                 </p>
                             </div>
                         </div>
-                        <div id="shortcode-widget-2"
+                        {{-- <div id="shortcode-widget-2"
                             class="shortcode_widget widget-count-3 col-md-4 col-sm-4 col-xs-12">
                             <div class="footer-title">
                                 <h4>Keep in touch</h4>
@@ -1130,7 +1136,7 @@
                                     <div class="contact-ajax-message"></div>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </section>

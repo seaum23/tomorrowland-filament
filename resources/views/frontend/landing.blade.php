@@ -559,8 +559,8 @@
                                                             <div class="product-image-wrapper">
                                                                 <div class="product-content">
                                                                     <div class="product-image product-trainer">
-                                                                        <a href="https://athlete.sdemo.site/teachers/392-2/"><img alt
-                                                                                src="https://athlete.sdemo.site/wp-content/uploads/2015/03/bg_pic4.jpg"></a>
+                                                                        <a href="#"><img alt
+                                                                                src="{{ asset('assets/lionel-messi.jpg') }}"></a>
                                                                     </div>
                                                                     <div class="info-products">
                                                                         <div class="img-trainers">
@@ -568,11 +568,11 @@
                                                                                 src="https://athlete.sdemo.site/wp-content/themes/athlete/iw_courses/assets/images/boxing-icon-1.png">
                                                                         </div>
                                                                         <div class="product-name">
-                                                                            <a href="https://athlete.sdemo.site/teachers/392-2/">Mike Stramond</a>
+                                                                            <a href="#">Lionel Messi</a>
                                                                             <div class="product-bottom"></div>
                                                                         </div>
                                                                         <div class="product-info">
-                                                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                                                            <p>The day you think there is no improvements to be made is a sad one for any player.</p>
                                                                         </div>
                                                                         <div class="actions">
                                                                         </div>
@@ -584,8 +584,8 @@
                                                             <div class="product-image-wrapper">
                                                                 <div class="product-content">
                                                                     <div class="product-image product-trainer">
-                                                                        <a href="https://athlete.sdemo.site/teachers/jonh-mike/"><img alt
-                                                                                src="https://athlete.sdemo.site/wp-content/uploads/2015/03/dsc7449.jpg"></a>
+                                                                        <a href="#"><img alt
+                                                                                src="{{ asset('assets/Sachin-Tendulkar.jpg') }}"></a>
                                                                     </div>
                                                                     <div class="info-products">
                                                                         <div class="img-trainers">
@@ -593,11 +593,11 @@
                                                                                 src="https://athlete.sdemo.site/wp-content/themes/athlete/iw_courses/assets/images/boxing-icon-1.png">
                                                                         </div>
                                                                         <div class="product-name">
-                                                                            <a href="https://athlete.sdemo.site/teachers/jonh-mike/">Jonh Mike</a>
+                                                                            <a href="#">Sachin Tendulkar</a>
                                                                             <div class="product-bottom"></div>
                                                                         </div>
                                                                         <div class="product-info">
-                                                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Consectetuer adipiscing elit, sed diam nonummy</p>
+                                                                            <p>People throw stones at you and you convert them into milestones.</p>
                                                                         </div>
                                                                         <div class="actions">
                                                                             <ul></ul>
@@ -610,8 +610,8 @@
                                                             <div class="product-image-wrapper">
                                                                 <div class="product-content">
                                                                     <div class="product-image product-trainer">
-                                                                        <a href="https://athlete.sdemo.site/teachers/ana/"><img alt
-                                                                                src="https://athlete.sdemo.site/wp-content/uploads/2015/03/bg_pic3.jpg"></a>
+                                                                        <a href="#"><img alt
+                                                                                src="{{ asset('assets/cristiano-ronaldo.jpg') }}"></a>
                                                                     </div>
                                                                     <div class="info-products">
                                                                         <div class="img-trainers">
@@ -619,21 +619,11 @@
                                                                                 src="https://athlete.sdemo.site/wp-content/themes/athlete/iw_courses/assets/images/boxing-icon-1.png">
                                                                         </div>
                                                                         <div class="product-name">
-                                                                            <a href="https://athlete.sdemo.site/teachers/ana/">Mike Doe</a>
+                                                                            <a href="#">Cristiano Ronaldo</a>
                                                                             <div class="product-bottom"></div>
                                                                         </div>
                                                                         <div class="product-info">
-                                                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet</p>
-                                                                        </div>
-                                                                        <div class="actions">
-                                                                            <ul>
-                                                                                <li><a target="_blank"
-                                                                                        href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
-                                                                                <li><a target="_blank"
-                                                                                        href="https://youtube.com"><i class="fa fa-youtube"></i></a></li>
-                                                                                <li><a target="_blank"
-                                                                                        href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
-                                                                            </ul>
+                                                                            <p>Dreams are not what you see in your sleep, dreams are things which do not let you sleep.</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -642,7 +632,7 @@
                                                     </div>
                                                 </section>
                                             </div>
-                                            <div class="load-product">
+                                            {{-- <div class="load-product">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <button class="load-more load-teacher"
@@ -660,7 +650,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </section>
 
                                         <div class="wpb_text_column wpb_content_element ">
