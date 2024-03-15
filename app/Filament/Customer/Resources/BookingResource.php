@@ -52,6 +52,7 @@ class BookingResource extends Resource
                 ViewColumn::make('status')->view('filament.tables.columns.booking_status'),
                 TextColumn::make('total_amount')->label('Total'),
                 TextColumn::make('advance'),
+                TextColumn::make('note'),
                 // TextColumn::make('bookingPayment.vendor'),
                 // TextColumn::make('bookingPayment.transaction_id')
                 // ->copyable()

@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Shift;
+use App\Models\Sport;
 use App\Models\Booking;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -15,27 +18,73 @@ use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ViewField;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Enums\FiltersLayout;
+use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\CheckboxList;
 use App\Filament\Resources\BookingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Filament\Resources\BookingResource\Widgets\BookingOverview;
-use App\Models\Sport;
 
 class BookingResource extends Resource
 {
     protected static ?string $model = Booking::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Booking Report';
+    protected static ?string $modelLabel = 'Booking Report';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Select::make('customer_id')
+                ->relationship('customer', 'name')
+                ->searchable()
+                ->preload()
+                ->required()
+                ->columnSpan(2)
+                ->createOptionForm([
+                    TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                    TextInput::make('phone')
+                    ->required()
+                    ->maxLength(255),
+                    TextInput::make('email')
+                        ->required()
+                        ->maxLength(255),
+                ]),
+                Select::make('sport_id')
+                ->relationship('sport', 'name')
+                ->searchable()
+                ->preload()
+                ->required(),
+                DatePicker::make('booking_date'),
+                TextInput::make('total_amount')
+                ->required()
+                ->maxLength(255),
+                TextInput::make('advance')
+                ->required()
+                ->maxLength(255),
+                CheckboxList::make('booking_times')
+                ->options(function(){
+                    $start = now()->startOfDay();
+                    $end = now()->endOfDay();
+                    $dates = [];
+                    for($i = 0; $i < 24; $i++){
+                        $time = sprintf("%02d", $i) . ":00:00";
+                        $dates[$time] = $time;
+                    }
+                    return $dates;
+                })
+                ->columns(2),
+                // ->gridDirection('row')
             ]);
     }
 
@@ -105,7 +154,7 @@ class BookingResource extends Resource
                 //         }]),
                 //     );
                 // })
-            ], layout: FiltersLayout::AboveContent)
+            ])
             ->actions([
                 Action::make('cancel')
                 ->action(fn (Booking $record) => $record->update(['status' => 3]))
@@ -128,7 +177,14 @@ class BookingResource extends Resource
 
             ])
             ->defaultSort('created_at', 'desc')
-            ->recordAction(null);
+            ->recordAction(null)
+            ->recordClasses(fn ($record) => match ($record->status) {
+                '1' => 'border-yellow-600',
+                '2' => 'bg-teal-700',
+                '3' => 'bg-rose-600',
+                '3' => 'bg-green-500',
+                default => null,
+            });
     }
 
     public static function getRelations(): array
@@ -148,10 +204,10 @@ class BookingResource extends Resource
         ];
     }
 
-    public static function canCreate(): bool
-    {
-        return false;
-    }    
+    // public static function canCreate(): bool
+    // {
+    //     return false;
+    // }    
 
     public static function getWidgets(): array
     {
@@ -167,6 +223,6 @@ class BookingResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->hasPermission('booking');
+        return auth()->user()->is_admin;
     }
 }

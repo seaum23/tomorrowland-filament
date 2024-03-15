@@ -1,9 +1,9 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <section class="slide-container to-top">
+    {{-- <section class="slide-container to-top">
 
-        <div id="P_MS659019099ef64"  class="master-slider-parent ms-parent-id-5" style>
+        <div id="P_MS659019099ef64"  class="master-slider-parent ms-parent-id-5">
 
             <div id="MS659019099ef64" class="master-slider ms-skin-default">
                 @foreach ($sports as $sport)
@@ -17,11 +17,10 @@
                             alt
                             title
                             data-src="{{asset('storage/'.$sport->attachments[0])}}" />
-                        {{-- <img src="https://athlete.sdemo.site/wp-content/plugins/masterslider/public/assets/css/blank.gif"
+                        <img src="https://athlete.sdemo.site/wp-content/plugins/masterslider/public/assets/css/blank.gif"
                             alt
                             title
-                            data-src="{{asset('storage/'.$sport->attachments[1])}}" /> --}}
-                            {{-- data-src="https://athlete.sdemo.site/wp-content/uploads/2014/12/bg_2.jpg" /> --}}
+                            data-src="{{asset('storage/'.$sport->attachments[1])}}" />
                         <div class="ms-layer heading-button msp-cn-5-3"
                             style
                             data-effect="t(true,n,-150,n,n,n,n,n,n,n,n,n,n,n,n)"
@@ -74,7 +73,7 @@
                 // slider setup
                 masterslider_ef64.setup("MS659019099ef64", {
                     width: 1400,
-                    height: $(window).height() * (2/3),
+                    height: $(window).height(),
                     minHeight: 0,
                     space: 0,
                     start: 1,
@@ -119,54 +118,58 @@
                 window.masterslider_instances.push(masterslider_ef64);
             });
         </script>
-        {{-- <div id="to-bottom" class="to-bottom"><i class="fa fa-angle-down"></i></div> --}}
-    </section>
-    <div class="contents-main" id="contents-main">
-        <article id="post-2" class="post-2 page type-page status-publish hentry">
-            <div class="entry-content">
-                <div class="vc_row wpb_row vc_row-fluid man-girl vc_custom_1425549921432">
-                    <div class="container" style="width: 100%;">
-                        <div class="row">
-                            @foreach ($sports as $sport)
-                                @if ($sport->show_on_banner)
-                                    <div onclick="loadPage('{{ route('book.index', $sport->name) }}')" class="content-main landing-content content-main-left wpb_column vc_column_container {{ $sports->count() >= 3 ? "vc_col-sm-4" : "vc_col-sm-6" }}  vc_col-has-fill" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'.$sport->attachments[0]) }});cursor:pointer;">
-                                        <div class="vc_column-inner vc_custom_1425464759231">
-                                            <div class="wpb_wrapper">
-                                                {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
-                                                <div class="class-content modded-class-content">
-                                                    <div class="title">
-                                                        <h3 class="title-men">{{ $sport->name }}</h3>
-                                                    </div>
-                                                    <div class="class-content-text">
-                                                        <p style="font-size: 2rem" class="desc-content">{{ $sport->description }}</p>
-                                                        <div class="join"><a href="{{ route('book.index', $sport->name) }}">Book Now</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                            {{-- <div class="content-main content-main-right wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill">
-                                <div class="vc_column-inner vc_custom_1425464769875">
-                                    <div class="wpb_wrapper">
-                                        <div class="img-class"><img src="https://athlete.sdemo.site/wp-content/uploads/2014/12/image-2.png"
-                                                alt="Women Class"></div>
-                                        <div class="class-content ">
-                                            <div class="title">
-                                                <h3 class="title-men">Women Class</h3>
-                                            </div>
-                                            <div class="class-content-text">
-                                                <p class="desc-content">Lorem ipsum dolor sit amet, consectetur adi sollicitudin. Suspendisse pulvinar, velit nec pharetra interdum, ante tellus ornare mi, et mollis tellus neque vitae elit</p>
-                                                <div class="join"><a href="#">Join Now</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
+        <div id="to-bottom" class="to-bottom"><i class="fa fa-angle-down"></i></div>
+    </section> --}}
+    <div class="sports-banner">
+        @foreach ($sports as $sport)
+            @if ($sport->is_featured)
+                <div onclick="loadPage('{{ route('book.index', $sport->name) }}')" class="sports-banner-child-featured sports-banner-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'.$sport->attachments[0]) }});">
+                    <div class="banner-body">
+                        {{-- <div class="wpb_wrapper"> --}}
+                            {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
+                            <div class="feature-text">
+                                <div class="feature-logo-style slide-in-left ms-layer msp-cn-5-1" style="width: fit-content; margin: 10px 10px 10px 0px">Tomorrowland</div>
+                                <div class="">
+                                    <p class="feature-text-style slide-in-top delay-1">Want to play {{ $sport->name }}?</p>
+                                    <div class="slide-in-top delay-2 heading-button" style="width: fit-content; padding: 9.71429px; font-size: 17.4857px; font-weight: bold;"><a href="{{ route('book.index', $sport->name) }}">Book for {{ $sport->name }} now</a></div>
                                 </div>
-                            </div> --}}
-                        </div>
+                            </div>
+                        {{-- </div> --}}
                     </div>
                 </div>
+            @endif
+        @endforeach
+        @php
+            $delay = 0;
+        @endphp
+        @foreach ($sports as $sport)
+            @if ($sport->show_on_banner)
+                <div onclick="loadPage('{{ route('book.index', $sport->name) }}')" class="sports-banner-child sports-banner-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'.$sport->attachments[0]) }});cursor:pointer;">
+                    <div style="margin-left: 10px; margin-top: 10px; animation-delay: {{$delay}}ms" class="slide-in-left join"><a href="{{ route('book.index', $sport->name) }}">Book Now</a></div>
+                    <div class="banner-body-sports" style="justify-content: end;text-align: end; padding-right: 50px">
+                        {{-- <div class="wpb_wrapper"> --}}
+                            {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
+                            <div class="">
+                                <div class="title">
+                                    <h3 class="slide-in-left title-men" style="font-size: 3rem;font-weight: bold; animation-delay: {{$delay+800}}ms">{{ $sport->name }}</h3>
+                                </div>
+                                <div class="">
+                                    <p style="font-size: 2rem; animation-delay: {{$delay+1600}}ms" class="slide-in-left ">{{ $sport->description }}</p>
+                                </div>
+                            </div>
+                        {{-- </div> --}}
+                    </div>
+                </div>
+                @php
+                    $delay += 2400;
+                @endphp
+            @endif
+        @endforeach
+    </div>
+    <div>
+        <article id="post-2" class="post-2 page type-page status-publish hentry">
+            <div class="entry-content">
+                
                 <div class="vc_row wpb_row vc_row-fluid about scroll-to vc_custom_1428996205928 vc_row-has-fill">
                     <div class="wpb_column vc_column_container vc_col-sm-12">
                         <div class="vc_column-inner">

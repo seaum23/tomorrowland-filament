@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Sport;
 use App\Models\Booking;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -12,18 +14,20 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Contracts\View\View;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\BookingReportResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\BookingReportResource\Pages;
 use App\Filament\Resources\BookingReportResource\RelationManagers;
+use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 use App\Filament\Resources\BookingReportResource\Widgets\BookingOverview;
-use App\Models\Sport;
 
 class BookingReportResource extends Resource
 {
@@ -31,8 +35,8 @@ class BookingReportResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Booking Report';
-    protected static ?string $modelLabel = 'Booking Report';
+    protected static ?string $navigationLabel = 'Booking';
+    protected static ?string $modelLabel = 'Booking';
 
 
     public static function form(Form $form): Form
@@ -67,17 +71,18 @@ class BookingReportResource extends Resource
                 // ViewColumn::make('bookingPayment.attachments')->view('filament.tables.columns.booking_images'),
             ])
             ->filters([
-                // Filter::make('created_at')
-                // ->form([
-                //     Forms\Components\DatePicker::make('created_at')->label('Booking date')->default(now()),
-                // ])
-                // ->query(function (Builder $query, array $data): Builder {
-                //     return $query
-                //     ->when(
-                //         $data['created_at'],
-                //         fn (Builder $query, $data): Builder => $query->whereDate('booking_date', $data),
-                //     );
-                // }),
+                DateRangeFilter::make('created_at')
+                ->displayFormat('YYYY-MM-DD')
+                ->query(function (Builder $query, array $data): Builder {
+                    return $query
+                    ->when(
+                        $data['created_at'],
+                        function (Builder $query, $data){
+                            $dates = explode(' - ',$data);
+                            $query->whereBetween('booking_date', $dates);
+                        }
+                    );
+                }),
 
                 // Filter::make('sports')
                 // ->form([
@@ -109,7 +114,7 @@ class BookingReportResource extends Resource
                 //         }]),
                 //     );
                 // })
-            ], layout: FiltersLayout::AboveContent)
+            ])
             ->actions([
                 Action::make('accept')
                 ->action(fn (Booking $record) => $record->update(['status' => 4]))
@@ -118,10 +123,14 @@ class BookingReportResource extends Resource
                 ->color('success')
                 ->visible(fn (Booking $record): bool => $record->status == 1),
                 Action::make('reject')
-                ->action(fn (Booking $record) => $record->update(['status' => 3]))
+                ->action(fn (array $data, Booking $record) => $record->update(['status' => 3, 'note' => $data['reason']]))
                 ->requiresConfirmation()
                 ->button()
                 ->color('danger')
+                ->form([
+                    Textarea::make('reason')
+                    ->label('Reason')
+                ])
                 ->visible(fn (Booking $record): bool => $record->status == 1),
                 ViewAction::make()
                 ->modalContent(fn (Booking $record): View => view(
@@ -138,7 +147,14 @@ class BookingReportResource extends Resource
 
             ])
             ->defaultSort('created_at', 'desc')
-            ->recordAction(null);
+            ->recordAction(null)
+            ->recordClasses(fn ($record) => match ($record->status) {
+                1 => 'bg-yellow-100',
+                2 => 'bg-blue-100',
+                3 => 'bg-rose-100',
+                4 => 'bg-green-100',
+                default => null,
+            });
     }
 
     public static function getRelations(): array
@@ -172,6 +188,6 @@ class BookingReportResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->is_admin;
+        return auth()->user()->hasPermission('booking');
     }
 }
