@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('booking_times', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Booking::class);
-            $table->date('booking_date');
             $table->string('time');
             $table->integer('status');
             $table->timestamps();
