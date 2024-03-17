@@ -151,15 +151,14 @@ class BookingController extends Controller
             'status' => 1
         ]);
 
-        $times = [];
-        foreach($request->booking_times as $time){
-            $times = BookingTime::create([
-                'booking_id' => $booking->id,
-                'booking_date' => $request->booking_day,
-                'time' => $time,
-                'status' => 0
-            ]);
-        }
+        // $times = [];
+        // foreach($request->booking_times as $time){
+        //     $times = BookingTime::create([
+        //         'booking_id' => $booking->id,
+        //         'time' => $time,
+        //         'status' => 0
+        //     ]);
+        // }
 
         Session::flash('booking', $booking->id);
         return redirect(route('success'));

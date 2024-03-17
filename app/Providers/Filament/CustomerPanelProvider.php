@@ -69,6 +69,7 @@ class CustomerPanelProvider extends PanelProvider
                     ->label('Home')
                     ->url(fn (): string => '/')
                     ->icon('heroicon-o-home'),
-            ]);
+            ])
+            ->darkMode(false);
     }
 }

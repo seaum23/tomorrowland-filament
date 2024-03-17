@@ -35,8 +35,8 @@ class BookingReportResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Booking';
-    protected static ?string $modelLabel = 'Booking';
+    protected static ?string $navigationLabel = 'Booking Report';
+    protected static ?string $modelLabel = 'Booking Report';
 
 
     public static function form(Form $form): Form
@@ -188,6 +188,6 @@ class BookingReportResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->hasPermission('booking');
+        return auth()->user()->is_admin;
     }
 }

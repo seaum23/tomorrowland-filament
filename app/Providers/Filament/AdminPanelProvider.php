@@ -59,6 +59,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->sidebarCollapsibleOnDesktop()
-            ->maxContentWidth(MaxWidth::Full);
+            ->maxContentWidth(MaxWidth::Full)
+            ->darkMode(false);
     }
 }

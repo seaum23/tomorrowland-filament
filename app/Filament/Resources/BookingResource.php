@@ -15,6 +15,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Contracts\View\View;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Fieldset;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
@@ -36,8 +37,6 @@ class BookingResource extends Resource
     protected static ?string $model = Booking::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationLabel = 'Booking Report';
-    protected static ?string $modelLabel = 'Booking Report';
 
     public static function form(Form $form): Form
     {
@@ -48,7 +47,7 @@ class BookingResource extends Resource
                 ->searchable()
                 ->preload()
                 ->required()
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->createOptionForm([
                     TextInput::make('name')
                     ->required()
@@ -60,22 +59,24 @@ class BookingResource extends Resource
                         ->required()
                         ->maxLength(255),
                 ]),
+                TextInput::make('name')
+                ->columnSpan(1),
+                TextInput::make('phone')
+                ->columnSpan(1),
                 Select::make('sport_id')
                 ->relationship('sport', 'name')
                 ->searchable()
                 ->preload()
                 ->required(),
-                DatePicker::make('booking_date'),
                 TextInput::make('total_amount')
                 ->required()
                 ->maxLength(255),
                 TextInput::make('advance')
                 ->required()
                 ->maxLength(255),
+                DatePicker::make('booking_date'),
                 CheckboxList::make('booking_times')
                 ->options(function(){
-                    $start = now()->startOfDay();
-                    $end = now()->endOfDay();
                     $dates = [];
                     for($i = 0; $i < 24; $i++){
                         $time = sprintf("%02d", $i) . ":00:00";
@@ -93,7 +94,7 @@ class BookingResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->label('Name'),
-                TextColumn::make('customer.phone')->label('Phone'),
+                TextColumn::make('phone')->label('Phone'),
                 TextColumn::make('customer.email')->label('Email'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
@@ -223,6 +224,6 @@ class BookingResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->is_admin;
+        return auth()->user()->hasPermission('booking');
     }
 }
