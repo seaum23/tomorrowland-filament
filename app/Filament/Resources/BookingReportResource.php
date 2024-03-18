@@ -38,6 +38,7 @@ class BookingReportResource extends Resource
     protected static ?string $navigationLabel = 'Booking Report';
     protected static ?string $modelLabel = 'Booking Report';
 
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -139,6 +140,7 @@ class BookingReportResource extends Resource
                 ))
                 ->modalHeading("Payment")
                 ->button()
+                ->form([])
                 ->icon('')
                 ->tooltip('Payment')
                 ->label("$"),

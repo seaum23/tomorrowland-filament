@@ -184,11 +184,11 @@
         transform: translateX(0%);
     }
     .feature-text-style{
-        line-height: normal;
+        line-height: 0;
     }
     .sports-banner{
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
+        grid-template-rows: 1fr 0.8fr 0.8fr 0.8fr;
     }
     .banner-body-sports{
         padding-top: 0px;
@@ -197,7 +197,7 @@
         font-size: 2rem;
     }
     .sports-banner{
-        height: calc(100vh - 100px);
+        height: fit-content;
     }
 }
 @media only screen and (max-width: 600px) {

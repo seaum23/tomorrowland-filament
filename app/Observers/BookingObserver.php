@@ -17,7 +17,7 @@ class BookingObserver
                 BookingTime::create([
                     'booking_id' => $booking->id,
                     'time' => $time,
-                    'status' => 1,
+                    'status' => 0,
                 ]);
             }
         }

@@ -16,6 +16,7 @@ use Filament\Tables\Filters\Filter;
 use Illuminate\Contracts\View\View;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ViewColumn;
@@ -37,6 +38,8 @@ class BookingResource extends Resource
     protected static ?string $model = Booking::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -158,7 +161,11 @@ class BookingResource extends Resource
             ])
             ->actions([
                 Action::make('cancel')
-                ->action(fn (Booking $record) => $record->update(['status' => 3]))
+                ->action(fn (array $data, Booking $record) => $record->update(['status' => 3, 'note' => $data['reason']]))
+                ->form([
+                    Textarea::make('reason')
+                    ->label('Reason')
+                ])
                 ->requiresConfirmation()
                 ->button()
                 ->color('danger')
@@ -170,6 +177,7 @@ class BookingResource extends Resource
                 ))
                 ->modalHeading("Booking payment")                
                 ->button()
+                ->form([])
                 ->icon('')
                 ->tooltip('Payment')
                 ->label("$"),
@@ -178,12 +186,12 @@ class BookingResource extends Resource
 
             ])
             ->defaultSort('created_at', 'desc')
-            ->recordAction(null)
+            ->recordAction(null)            
             ->recordClasses(fn ($record) => match ($record->status) {
-                '1' => 'border-yellow-600',
-                '2' => 'bg-teal-700',
-                '3' => 'bg-rose-600',
-                '3' => 'bg-green-500',
+                1 => 'bg-yellow-100',
+                2 => 'bg-blue-100',
+                3 => 'bg-rose-100',
+                4 => 'bg-green-100',
                 default => null,
             });
     }
