@@ -157,6 +157,16 @@
     padding: 30px 10px 30px 0px;
 }
 
+.success-time > span{
+    display: inline-block;
+    white-space: nowrap;
+    overflow-y: auto;
+}
+
+.success-ms-layer{
+    display: inline-block !important;
+}
+
 @keyframes slide-in-top {
     0% {
         -webkit-transform: translateY(-1000px);
@@ -198,6 +208,22 @@
     }
     .sports-banner{
         height: fit-content;
+    }
+    .ms-layer.msp-cn-5-3{
+        font-size: 20px !important;
+        line-height: normal;
+    }
+    .total-amount{
+        margin-top: 20px !important;
+    }
+    .advance-amount{
+        margin-top: 60px !important;
+    }
+    .success-date{
+        margin-top: 100px !important;
+    }
+    .success-time{
+        margin-top: 150px !important;
     }
 }
 @media only screen and (max-width: 600px) {

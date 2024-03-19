@@ -76,10 +76,10 @@ class BookingResource extends Resource
                     TextInput::make('vendor')
                     ->label('Bkash/Nagad/Other')
                     ->required()
-                    ->columnSpan(2),
+                    ->columnSpan(['sm' => 1, 'xl' => 1]),
                     TextInput::make('last_4_digit')
                     ->required()
-                    ->columnSpan(1),
+                    ->columnSpan(['sm' => 1, 'xl' => 1]),
                     // DatePicker::make('payment_date')
                     // ->required()
                     // ->columnSpan(2),
@@ -87,7 +87,7 @@ class BookingResource extends Resource
                     // ->columnSpan(2),
                     FileUpload::make('attachments')
                     ->multiple()
-                    ->columnSpan(3)
+                    ->columnSpan(['sm' => 1, 'xl' => 2])
                 ])
                 ->button()
                 ->visible(fn (Booking $record): bool => $record->status == 1 OR  $record->status == 4)
@@ -104,7 +104,15 @@ class BookingResource extends Resource
             ->bulkActions([
                 
             ])
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->recordAction(null)
+            ->recordClasses(fn ($record) => match ($record->status) {
+                1 => 'bg-yellow-100',
+                2 => 'bg-blue-100',
+                3 => 'bg-rose-100',
+                4 => 'bg-green-100',
+                default => null,
+            });
 
     }
 

@@ -17,46 +17,46 @@
                             data-src="{{asset('storage/'.$sport->attachments[1])}}" /> --}}
                             {{-- data-src="https://athlete.sdemo.site/wp-content/uploads/2014/12/bg_2.jpg" /> --}}
                         
-                        <div class="ms-layer msp-cn-5-3"
+                        <div class="ms-layer msp-cn-5-3 success-time"
                             style
                             data-effect="front(long)" 
                             data-duration="800" 
                             data-delay="0" 
                             data-hide-effect="fade"
                             data-offset-x="108"
-                            data-offset-y="170"
+                            data-offset-y="30"
                             data-origin="ml">
                             Time: @foreach ($booking->bookingTimes as $idx => $time) <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">{{ \Carbon\Carbon::createFromFormat("H:i:s", $time->time)->format('h:i a') }}</span> @endforeach</div>
                         
-                        <div class="ms-layer msp-cn-5-3"
+                        <div class="ms-layer msp-cn-5-3 success-date"
                             style
                             data-effect="front(long)" 
                             data-duration="800" 
                             data-delay="0" 
                             data-hide-effect="fade"
                             data-offset-x="108"
-                            data-offset-y="130"
+                            data-offset-y="-10"
                             data-origin="ml">
                             Date: <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">{{ $booking->booking_date->format('Y-m-d') }}</span></div>
-                        <div class="ms-layer msp-cn-5-3"
+                        <div class="ms-layer msp-cn-5-3 advance-amount"
                             style
                             data-effect="front(long)" 
                             data-duration="800" 
                             data-delay="0" 
                             data-hide-effect="fade"
                             data-offset-x="108"
-                            data-offset-y="90"
+                            data-offset-y="-40"
                             data-origin="ml">
                             Advance amount: <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">৳{{ $booking->advance }}</span></div>
                             <hr>
-                        <div class="ms-layer msp-cn-5-3"
+                        <div class="ms-layer msp-cn-5-3 total-amount"
                             style
                             data-effect="front(long)" 
                             data-duration="800" 
                             data-delay="0" 
                             data-hide-effect="fade"
                             data-offset-x="108"
-                            data-offset-y="50"
+                            data-offset-y="-80"
                             data-origin="ml">
                             Total amount: <span style="border: 2px solid white; padding: 3px 3px; border-radius: 5px;">৳{{ $booking->total_amount }}</span></div>
                         <div class="ms-layer  msp-cn-5-2"
@@ -66,7 +66,7 @@
                             data-delay="0" 
                             data-hide-effect="fade"
                             data-offset-x="103"
-                            data-offset-y="0"
+                            data-offset-y="-120"
                             data-origin="ml">
                             Thank you for booking</div>
                         <div class="ms-layer  msp-cn-5-1"
@@ -76,7 +76,7 @@
                             data-ease="easeInOutExpo"
                             data-resize="false"
                             data-offset-x="108"
-                            data-offset-y="-100"
+                            data-offset-y="-220"
                             data-origin="ml">
                             Tomorrowland</div>
                     </div>
@@ -123,17 +123,17 @@
                     fillMode: "fill",
                     centerControls: true,
                     startOnAppear: false,
-                    layersMode: "center",
+                    layersMode: "top",
                     autofillTarget: "",
                     hideLayers: false,
                     fullscreenMargin: 0,
                     speed: 20,
                     dir: "h",
-                    responsive: true,
+                    responsive: false,
                     tabletWidth: 768,
                     tabletHeight: null,
-                    phoneWidth: 480,
-                    phoneHeight: null,
+                    phoneWidth: 700,
+                    phoneHeight: "100%",
                     sizingReference: window,
                     parallaxMode: 'swipe',
                     view: "basic"
