@@ -933,9 +933,14 @@
                                     <ul id="menu-main-menu-1"
                                         class="nav-menu">
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595 {{ request()->is('/') ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
-                                        @foreach ($sports as $sport)
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-page {{ request()->is("book/$sport->name") ? 'active' : '' }} "><a href="{{ route('book.index', $sport->name) }}">{{ $sport->name }}</a></li>                        
-                                        @endforeach
+                                        <li id="menu-item-467" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children @foreach ($sports as $sport) {{ request()->is("book/$sport->name") ? 'active' : '' }} @endforeach">
+                                            <a href="#">Sports<i class="icon-arrow"></i></a>
+                                            <ul class="child-nav dropdown-nav">
+                                            @foreach ($sports as $sport)
+                                                <li id="menu-item-1248" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent"><a href="{{ route('book.index', $sport->name) }}">{{ $sport->name }}</a></li>
+                                            @endforeach
+                                            </ul>
+                                        </li>
                                         {{-- <li id="menu-item-37"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-has-children menu-item-37 selected active "><a href="https://athlete.sdemo.site/">Home<i class="icon-arrow"></i></a>
                                             <ul class="child-nav dropdown-nav">

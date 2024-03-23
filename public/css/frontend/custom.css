@@ -48,16 +48,22 @@
 }
 
 .sports-banner{
-    height: 100vh;
+    height: 130vh;
     /* margin-top: 100px; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1.5fr 1fr;
+    grid-template-rows: 2fr 1fr;
+}
+
+.sports-banner-bottom{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
 }
 
 .sports-banner-child-featured{
     grid-column: 1 / -1;
-    grid-row: 1;
 }
 
 .sports-banner-img{
@@ -89,6 +95,12 @@
 .slide-in-top {
     -webkit-animation: slide-in-top 1s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
     animation: slide-in-top 1s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
+    animation-fill-mode: forwards;
+}
+
+.slide-in-top-y {
+    -webkit-animation: slide-in-top-y 1s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
+    animation: slide-in-top-y 1s cubic-bezier(0.645, 0.045, 0.355, 1.000) ;
     animation-fill-mode: forwards;
 }
 
@@ -155,6 +167,19 @@
     font-size: 6rem;
     font-weight: bold;
     padding: 30px 10px 30px 0px;
+    color: #9ED458;
+}
+
+.div-heading{
+    transform: translateY(10px);
+    width: fit-content;
+    padding: 9.71429px;
+    font-size: 17.4857px;
+    font-weight: bold;
+}
+
+.div-heading a{
+    color: black !important;
 }
 
 .success-time > span{
@@ -165,6 +190,32 @@
 
 .success-ms-layer{
     display: inline-block !important;
+}
+
+.feature-logo-style{
+    color: #9ED458;
+    border-color: #9ED458;
+}
+
+.page-footer{
+    font-size: 1.5rem;
+}
+
+.textwidget{
+    color: #9ED458;
+}
+
+@keyframes slide-in-top-y {
+    0% {
+        -webkit-transform: translateY(-1000px);
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translate(10px, -70px);
+        opacity: 1;
+    }
 }
 
 @keyframes slide-in-top {
@@ -232,4 +283,20 @@
         padding-top: 7px;
         padding-bottom: 7px;
     }
+}
+
+.header-container-2, .header-container-3{
+    background: none repeat scroll 0 0 #9ED458!important;
+}
+
+.megamenu ul>li>a{
+    color: black;
+}
+
+.megamenu ul.nav-menu>li:hover a, .megamenu ul.nav-menu>li.active{
+    color: white;
+}
+
+.megamenu ul.nav-menu>li:before, .megamenu ul.nav-menu>li:after{
+    border-bottom: 2px solid #ffffff;
 }

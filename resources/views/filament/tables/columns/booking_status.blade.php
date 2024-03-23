@@ -1,6 +1,6 @@
 @switch($getRecord()->status)
     @case(1)
-        <span class="px-2 py-1 font-semibold text-sm bg-lime-300 text-white rounded-full shadow-sm">Pending</span>
+        <span class="px-2 py-1 font-semibold text-sm bg-lime-600 text-white rounded-full shadow-sm">Pending</span>
         @break
     @case(2)
         <span class="px-2 py-1 font-semibold text-sm bg-green-700 text-white rounded-full shadow-sm">Payment submitted</span>

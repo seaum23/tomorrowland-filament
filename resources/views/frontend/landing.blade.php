@@ -131,7 +131,6 @@
                                 <div class="feature-logo-style slide-in-left ms-layer msp-cn-5-1" style="width: fit-content; margin: 10px 10px 10px 0px">Tomorrowland</div>
                                 <div class="">
                                     <p class="feature-text-style slide-in-top delay-1">Want to play {{ $sport->name }}?</p>
-                                    <div class="slide-in-top delay-2 heading-button" style="width: fit-content; padding: 9.71429px; font-size: 17.4857px; font-weight: bold;"><a href="{{ route('book.index', $sport->name) }}">Book for {{ $sport->name }} now</a></div>
                                 </div>
                             </div>
                         {{-- </div> --}}
@@ -145,6 +144,7 @@
         @foreach ($sports as $sport)
             @if ($sport->show_on_banner)
                 <div onclick="loadPage('{{ route('book.index', $sport->name) }}')" class="sports-banner-child sports-banner-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'.$sport->attachments[0]) }});cursor:pointer;">
+                    <div class="slide-in-top-y heading-button div-heading"><a href="{{ route('book.index', $sport->name) }}">Book for {{ $sport->name }} now</a></div>
                     <div style="margin-left: 10px; margin-top: 10px; animation-delay: {{$delay}}ms" class="slide-in-left join"><a href="{{ route('book.index', $sport->name) }}">Book Now</a></div>
                     <div class="banner-body-sports" style="justify-content: end;text-align: end; padding-right: 50px">
                         {{-- <div class="wpb_wrapper"> --}}
@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 @php
-                    $delay += 2400;
+                    $delay += 1000;
                 @endphp
             @endif
         @endforeach

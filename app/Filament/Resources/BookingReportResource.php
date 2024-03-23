@@ -53,7 +53,7 @@ class BookingReportResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->label('Name'),
-                TextColumn::make('customer.phone')->label('Phone'),
+                TextColumn::make('phone')->label('Phone'),
                 TextColumn::make('customer.email')->label('Email'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
@@ -122,7 +122,7 @@ class BookingReportResource extends Resource
                 ->requiresConfirmation()
                 ->button()
                 ->color('success')
-                ->visible(fn (Booking $record): bool => $record->status == 1),
+                ->visible(fn (Booking $record): bool => $record->status == 1 or $record->status == 2),
                 Action::make('reject')
                 ->action(fn (array $data, Booking $record) => $record->update(['status' => 3, 'note' => $data['reason']]))
                 ->requiresConfirmation()
@@ -132,7 +132,7 @@ class BookingReportResource extends Resource
                     Textarea::make('reason')
                     ->label('Reason')
                 ])
-                ->visible(fn (Booking $record): bool => $record->status == 1),
+                ->visible(fn (Booking $record): bool => $record->status == 1 or $record->status == 2),
                 ViewAction::make()
                 ->modalContent(fn (Booking $record): View => view(
                     'filament.resources.booking-resource.payment_view',
@@ -151,10 +151,10 @@ class BookingReportResource extends Resource
             ->defaultSort('created_at', 'desc')
             ->recordAction(null)
             ->recordClasses(fn ($record) => match ($record->status) {
-                1 => 'bg-yellow-100',
-                2 => 'bg-blue-100',
-                3 => 'bg-rose-100',
-                4 => 'bg-green-100',
+                1 => 'bg-yellow-300',
+                2 => 'bg-blue-300',
+                3 => 'bg-rose-300',
+                4 => 'bg-green-300',
                 default => null,
             });
     }

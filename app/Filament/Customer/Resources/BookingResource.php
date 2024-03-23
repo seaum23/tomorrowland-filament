@@ -41,7 +41,7 @@ class BookingResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->label('Name'),
-                TextColumn::make('customer.phone')->label('Number'),
+                TextColumn::make('phone')->label('Number'),
                 // TextColumn::make('customer.email'),
                 TextColumn::make('sport.name'),
                 TextColumn::make('booking_date')
@@ -107,10 +107,10 @@ class BookingResource extends Resource
             ->defaultSort('created_at', 'desc')
             ->recordAction(null)
             ->recordClasses(fn ($record) => match ($record->status) {
-                1 => 'bg-yellow-100',
-                2 => 'bg-blue-100',
-                3 => 'bg-rose-100',
-                4 => 'bg-green-100',
+                1 => 'bg-yellow-300',
+                2 => 'bg-blue-300',
+                3 => 'bg-rose-300',
+                4 => 'bg-green-300',
                 default => null,
             });
 

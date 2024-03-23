@@ -160,16 +160,22 @@ class BookingResource extends Resource
                 // })
             ])
             ->actions([
-                Action::make('cancel')
+                Action::make('accept')
+                ->action(fn (Booking $record) => $record->update(['status' => 4]))
+                ->requiresConfirmation()
+                ->button()
+                ->color('success')
+                ->visible(fn (Booking $record): bool => $record->status == 1 OR $record->status == 2),
+                Action::make('reject')
                 ->action(fn (array $data, Booking $record) => $record->update(['status' => 3, 'note' => $data['reason']]))
+                ->requiresConfirmation()
+                ->button()
+                ->color('danger')
                 ->form([
                     Textarea::make('reason')
                     ->label('Reason')
                 ])
-                ->requiresConfirmation()
-                ->button()
-                ->color('danger')
-                ->visible(fn (Booking $record): bool => $record->status == 1),
+                ->visible(fn (Booking $record): bool => $record->status == 1 OR $record->status == 2),
                 ViewAction::make()
                 ->modalContent(fn (Booking $record): View => view(
                     'filament.resources.booking-resource.payment_view',
@@ -188,10 +194,10 @@ class BookingResource extends Resource
             ->defaultSort('created_at', 'desc')
             ->recordAction(null)            
             ->recordClasses(fn ($record) => match ($record->status) {
-                1 => 'bg-yellow-100',
-                2 => 'bg-blue-100',
-                3 => 'bg-rose-100',
-                4 => 'bg-green-100',
+                1 => 'bg-yellow-300',
+                2 => 'bg-blue-300',
+                3 => 'bg-rose-300',
+                4 => 'bg-green-300',
                 default => null,
             });
     }
