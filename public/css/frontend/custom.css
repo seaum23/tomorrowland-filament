@@ -167,7 +167,7 @@
     font-size: 6rem;
     font-weight: bold;
     padding: 30px 10px 30px 0px;
-    color: #9ED458;
+    color: #8eff38;
 }
 
 .div-heading{
@@ -193,16 +193,48 @@
 }
 
 .feature-logo-style{
-    color: #9ED458;
-    border-color: #9ED458;
+    color: #8eff38;
+    border-color: #8eff38;
 }
 
 .page-footer{
     font-size: 1.5rem;
 }
 
-.textwidget{
-    color: #9ED458;
+.textwidget,
+.footer-right .line1 a{
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+
+.footer-title h4{
+    color: #000000 !important;
+    font-weight: 900 !important;
+}
+
+.page-footer a{
+    color: black;
+}
+
+.page-footer{
+    background: none repeat scroll 0 0 #8eff38;
+}
+
+.mainnav .nav-menu li .child-nav{
+    background-color: black;
+    border: 1px solid black;
+}
+
+.megamenu>.nav-menu>li>.child-nav:before{
+    border-color: transparent transparent transparent #000;
+}
+
+.megamenu .nav-menu>li ul.child-nav li a{
+    color: #8eff38;
+}
+.megamenu .nav-menu>li ul.child-nav li>a:hover{
+    color: white;
 }
 
 @keyframes slide-in-top-y {
@@ -213,7 +245,7 @@
     }
     100% {
         -webkit-transform: translateY(0);
-        transform: translate(10px, -70px);
+        transform: translate(10px, -150px);
         opacity: 1;
     }
 }
@@ -232,6 +264,10 @@
 }
 
 @media only screen and (max-width: 770px) {
+    .slide-in-top-y{
+        display: none;
+    }
+
     .sports-banner-child-featured{
         grid-column: unset;
         grid-row: unset;
@@ -286,7 +322,7 @@
 }
 
 .header-container-2, .header-container-3{
-    background: none repeat scroll 0 0 #9ED458!important;
+    background: none repeat scroll 0 0 #8eff38!important;
 }
 
 .megamenu ul>li>a{
@@ -298,5 +334,5 @@
 }
 
 .megamenu ul.nav-menu>li:before, .megamenu ul.nav-menu>li:after{
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #000000;
 }

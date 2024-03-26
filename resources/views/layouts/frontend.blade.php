@@ -1044,8 +1044,8 @@
                                                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item-353"><a href="?p=347">Blog Detail</a></li>
                                             </ul>
                                         </li> --}}
-                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('contact.us') }}">Contact Us</a></li>
-                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="{{ route('contact.us') }}">About Us</a></li>
+                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595 {{ request()->is('contact-us') ? 'active' : '' }}"><a href="{{ route('contact.us') }}">Contact Us</a></li>
+                                        <li id="menu-item-595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-595"><a href="#">About Us</a></li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page landing-avater">
                                             <a href="{{ url('customer/bookings') }}" aria-label="User menu" role="button" type="button" style="margin:23px 0;cursor: pointer;">
                                                 <img style="width: 35px; border-radius: 9999px;" class="fi-avatar object-cover object-center fi-circular rounded-full h-8 w-8 fi-user-avatar" src="https://ui-avatars.com/api/?name={{auth()->user()->initials()}}&color=FFFFFF&background={{ config('app.bg') }}">
@@ -1081,7 +1081,7 @@
                                     </div>
                                 </div>
                                 <div class="social_icon">
-                                    <a href="https://www.facebook.com/TomorrowLandctg"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/TomorrowLandctg"><i style="color: white" class="fa fa-facebook"></i></a>
                                     {{-- <a href="#"><i class="fa fa-twitter"></i></a> --}}
                                     {{-- <a href="#"><i class="fa fa-google-plus"></i></a> --}}
                                     {{-- <a href="#"><i class="fa fa-whatsapp"></i></a> --}}
@@ -1107,6 +1107,10 @@
                                 </p>
                             </div>
                         </div>
+                        <div id="shortcode-widget-2">
+                            <p style="color: black;text-align: end;">Developed by <span class="textwidget">CTG SOFT</span></p>
+                        </div>
+
                         {{-- <div id="shortcode-widget-2"
                             class="shortcode_widget widget-count-3 col-md-4 col-sm-4 col-xs-12">
                             <div class="footer-title">

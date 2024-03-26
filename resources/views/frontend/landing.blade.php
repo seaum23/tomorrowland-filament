@@ -563,9 +563,8 @@
                                                                                 src="{{ asset('assets/lionel-messi.jpg') }}"></a>
                                                                     </div>
                                                                     <div class="info-products">
-                                                                        <div class="img-trainers">
-                                                                            <img alt
-                                                                                src="https://athlete.sdemo.site/wp-content/themes/athlete/iw_courses/assets/images/boxing-icon-1.png">
+                                                                        <div style="display: flex;align-items: center;justify-content: center;font-size: 3rem" class="img-trainers">
+                                                                            <i style="color: black" class="fa-solid fa-futbol"></i>
                                                                         </div>
                                                                         <div class="product-name">
                                                                             <a href="#">Lionel Messi</a>
@@ -588,9 +587,8 @@
                                                                                 src="{{ asset('assets/Sachin-Tendulkar.jpg') }}"></a>
                                                                     </div>
                                                                     <div class="info-products">
-                                                                        <div class="img-trainers">
-                                                                            <img alt
-                                                                                src="https://athlete.sdemo.site/wp-content/themes/athlete/iw_courses/assets/images/boxing-icon-1.png">
+                                                                        <div style="display: flex;align-items: center;justify-content: center;font-size: 3rem" class="img-trainers">
+                                                                            <i style="color: black" class="fa-solid fa-baseball-bat-ball"></i>
                                                                         </div>
                                                                         <div class="product-name">
                                                                             <a href="#">Sachin Tendulkar</a>
@@ -614,9 +612,8 @@
                                                                                 src="{{ asset('assets/cristiano-ronaldo.jpg') }}"></a>
                                                                     </div>
                                                                     <div class="info-products">
-                                                                        <div class="img-trainers">
-                                                                            <img alt
-                                                                                src="https://athlete.sdemo.site/wp-content/themes/athlete/iw_courses/assets/images/boxing-icon-1.png">
+                                                                        <div style="display: flex;align-items: center;justify-content: center;font-size: 3rem" class="img-trainers">
+                                                                            <i style="color: black" class="fa-solid fa-futbol"></i>
                                                                         </div>
                                                                         <div class="product-name">
                                                                             <a href="#">Cristiano Ronaldo</a>
