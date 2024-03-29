@@ -6,6 +6,7 @@ use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BookingController;
+use App\Http\Controllers\SmsController;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
@@ -48,5 +49,7 @@ Route::middleware(['auth:customer'])->group(function(){
 
     Route::view('contact-us','frontend.contact_us')->name('contact.us');
 });
+
+Route::get('send', [SmsController::class, 'index']);
 
 Route::post('book-time/{booking_time_id}/update', [BookingController::class, 'bookingTimeUpdate'])->name('book.time.update');
