@@ -30,7 +30,7 @@ class CustomerPanelProvider extends PanelProvider
             ->path('customer')
             ->login(Login::class)
             ->colors([
-                'primary' => "#8eff38",
+                'primary' => "#dbf227",
             ])
             ->discoverResources(in: app_path('Filament/Customer/Resources'), for: 'App\\Filament\\Customer\\Resources')
             ->discoverPages(in: app_path('Filament/Customer/Pages'), for: 'App\\Filament\\Customer\\Pages')
@@ -71,6 +71,27 @@ class CustomerPanelProvider extends PanelProvider
                     ->icon('heroicon-o-home'),
             ])
             ->darkMode(false)
-            ->brandLogo(fn () => view('filament.customer.logo'));
+            ->brandLogo(fn () => view('filament.customer.logo'))
+            ->colors([
+                'danger' => Color::Rose,
+                'gray' => Color::Gray,
+                'info' => Color::Blue,
+                'primary' => Color::Indigo,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
+                'black' => [
+                    50 => '0, 0, 0',
+                    100 => '0, 0, 0',
+                    200 => '0, 0, 0',
+                    300 => '0, 0, 0',
+                    400 => '0, 0, 0',
+                    500 => '0, 0, 0',
+                    600 => '0, 0, 0',
+                    700 => '0, 0, 0',
+                    800 => '0, 0, 0',
+                    900 => '0, 0, 0',
+                    950 => '0, 0, 0',
+                ],
+            ]);;
     }
 }

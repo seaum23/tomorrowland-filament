@@ -28,7 +28,7 @@
 
 .header-container .logo img{
     margin: 10px 5px 10px 5px;
-    height: 75px;
+    height: 85px;
 }
 
 .vc_custom_1428996205928{
@@ -167,7 +167,7 @@
     font-size: 6rem;
     font-weight: bold;
     padding: 30px 10px 30px 0px;
-    color: #8eff38;
+    color: #dbf227;
 }
 
 .div-heading{
@@ -193,8 +193,8 @@
 }
 
 .feature-logo-style{
-    color: #8eff38;
-    border-color: #8eff38;
+    color: #dbf227;
+    border-color: #dbf227;
 }
 
 .page-footer{
@@ -207,6 +207,17 @@
     font-weight: 600 !important;
 }
 
+.product-content .info-products:hover, .our-trainers .info-products:hover,.product-image-wrapper:hover .info-products{
+    background: none repeat scroll 0 0 #000;
+}
+
+.header-container-3 #open-button{
+    top: 30px !important;
+}
+
+#open-button{
+    background: none repeat scroll 0 0 #000;
+}
 
 .footer-title h4{
     color: #000000 !important;
@@ -218,7 +229,7 @@
 }
 
 .page-footer{
-    background: none repeat scroll 0 0 #8eff38;
+    background: none repeat scroll 0 0 #dbf227;
 }
 
 .mainnav .nav-menu li .child-nav{
@@ -231,7 +242,7 @@
 }
 
 .megamenu .nav-menu>li ul.child-nav li a{
-    color: #8eff38;
+    color: #dbf227;
 }
 .megamenu .nav-menu>li ul.child-nav li>a:hover{
     color: white;
@@ -268,6 +279,18 @@
         display: none;
     }
 
+    .menu-wrap{
+        color: black !important;
+    }
+
+    .menu-wrap li a{
+        color: black !important;
+    }
+    #close-button{
+        right: 5px !important;
+        color: black !important;
+    }
+
     .sports-banner-child-featured{
         grid-column: unset;
         grid-row: unset;
@@ -285,7 +308,7 @@
     }
     .sports-banner{
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 0.8fr 0.8fr 0.8fr;
+        grid-template-rows: 1.5fr 1fr 1fr 1fr;
     }
     .banner-body-sports{
         padding-top: 0px;
@@ -322,7 +345,7 @@
 }
 
 .header-container-2, .header-container-3{
-    background: none repeat scroll 0 0 #8eff38!important;
+    background: none repeat scroll 0 0 #dbf227!important;
 }
 
 .megamenu ul>li>a{

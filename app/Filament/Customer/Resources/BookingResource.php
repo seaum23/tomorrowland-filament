@@ -90,6 +90,7 @@ class BookingResource extends Resource
                     ->columnSpan(['sm' => 1, 'xl' => 2])
                 ])
                 ->button()
+                ->color('black')
                 ->visible(fn (Booking $record): bool => $record->status == 1 OR  $record->status == 4)
                 ->action(function (array $data, Booking $record): void {
                     $record->bookingPayment()->create([

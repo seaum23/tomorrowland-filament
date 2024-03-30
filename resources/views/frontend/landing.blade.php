@@ -573,8 +573,8 @@
                                                                         <div class="product-info">
                                                                             <p>The day you think there is no improvements to be made is a sad one for any player.</p>
                                                                         </div>
-                                                                        <div class="actions">
-                                                                        </div>
+                                                                        {{-- <div class="actions">
+                                                                        </div> --}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -597,9 +597,9 @@
                                                                         <div class="product-info">
                                                                             <p>People throw stones at you and you convert them into milestones.</p>
                                                                         </div>
-                                                                        <div class="actions">
+                                                                        {{-- <div class="actions">
                                                                             <ul></ul>
-                                                                        </div>
+                                                                        </div> --}}
                                                                     </div>
                                                                 </div>
                                                             </div>
