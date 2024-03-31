@@ -247,6 +247,15 @@
 .megamenu .nav-menu>li ul.child-nav li>a:hover{
     color: white;
 }
+.join a, .watch-video a{
+    border: 2px solid #dbf227;
+    color: #dbf227;
+}
+
+.footer-link{
+    color: black;
+    text-align: end;
+}
 
 @keyframes slide-in-top-y {
     0% {
@@ -275,6 +284,10 @@
 }
 
 @media only screen and (max-width: 770px) {
+    .footer-link{
+        text-align: center;
+    }
+
     .slide-in-top-y{
         display: none;
     }
@@ -285,6 +298,7 @@
 
     .menu-wrap li a{
         color: black !important;
+        font-weight: 700;
     }
     #close-button{
         right: 5px !important;
@@ -353,9 +367,9 @@
 }
 
 .megamenu ul.nav-menu>li:hover a, .megamenu ul.nav-menu>li.active{
-    color: white;
+    color: black;
 }
 
 .megamenu ul.nav-menu>li:before, .megamenu ul.nav-menu>li:after{
-    border-bottom: 2px solid #000000;
+    border-bottom: 3px solid #000000;
 }

@@ -1108,7 +1108,7 @@
                             </div>
                         </div>
                         <div id="shortcode-widget-2">
-                            <p style="color: black;text-align: end;">Developed by <span class="textwidget">CTG SOFT</span></p>
+                            <p class="footer-link">Developed by <a href="https://ctgsoft.com" class="textwidget">CTG SOFT</a></p>
                         </div>
 
                         {{-- <div id="shortcode-widget-2"

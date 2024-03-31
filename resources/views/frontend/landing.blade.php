@@ -121,40 +121,40 @@
         <div id="to-bottom" class="to-bottom"><i class="fa fa-angle-down"></i></div>
     </section> --}}
     <div class="sports-banner">
-        @foreach ($sports as $sport)
-            @if ($sport->is_featured)
-                <div onclick="loadPage('{{ route('book.index', $sport->name) }}')" class="sports-banner-child-featured sports-banner-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'.$sport->attachments[0]) }});">
-                    <div class="banner-body">
-                        {{-- <div class="wpb_wrapper"> --}}
-                            {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
-                            <div class="feature-text">
-                                <div class="feature-logo-style slide-in-left ms-layer msp-cn-5-1" style="width: fit-content; margin: 10px 10px 10px 0px">Tomorrowland</div>
-                                <div class="">
-                                    <p class="feature-text-style slide-in-top delay-1">Want to play {{ $sport->name }}?</p>
-                                </div>
-                            </div>
-                        {{-- </div> --}}
+        {{-- @foreach ($sports as $sport) --}}
+            {{-- @if ($sport->is_featured) --}}
+        <div class="sports-banner-child-featured sports-banner-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('assets/banner.jpg') }});">
+            <div class="banner-body">
+                {{-- <div class="wpb_wrapper"> --}}
+                    {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
+                    <div class="feature-text">
+                        <div class="feature-logo-style slide-in-left ms-layer msp-cn-5-1" style="width: fit-content; margin: 10px 10px 10px 0px">Tomorrowland</div>
+                        <div class="">
+                            <p class="feature-text-style slide-in-top delay-1">Let's Play Chattogram!</p>
+                        </div>
                     </div>
-                </div>
-            @endif
-        @endforeach
+                {{-- </div> --}}
+            </div>
+        </div>
+            {{-- @endif --}}
+        {{-- @endforeach --}}
         @php
             $delay = 0;
         @endphp
         @foreach ($sports as $sport)
             @if ($sport->show_on_banner)
                 <div onclick="loadPage('{{ route('book.index', $sport->name) }}')" class="sports-banner-child sports-banner-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({{ asset('storage/'.$sport->attachments[0]) }});cursor:pointer;">
-                    <div class="slide-in-top-y heading-button div-heading"><a href="{{ route('book.index', $sport->name) }}">Book for {{ $sport->name }} now</a></div>
+                    <div class="slide-in-top-y heading-button div-heading"><a href="{{ route('book.index', $sport->name) }}">Book for {{ $sport->name }}</a></div>
                     <div style="margin-left: 10px; margin-top: 10px; animation-delay: {{$delay}}ms" class="slide-in-left join"><a href="{{ route('book.index', $sport->name) }}">Book Now</a></div>
                     <div class="banner-body-sports" style="justify-content: end;text-align: end; padding-right: 50px">
                         {{-- <div class="wpb_wrapper"> --}}
                             {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
                             <div class="">
                                 <div class="title">
-                                    <h3 class="slide-in-left title-men" style="font-size: 3rem;font-weight: bold; animation-delay: {{$delay+800}}ms">{{ $sport->name }}</h3>
+                                    <h3 class="slide-in-left title-men" style="color: #dbf227;font-size: 3rem;font-weight: bold; animation-delay: {{$delay+800}}ms">{{ $sport->name }}</h3>
                                 </div>
                                 <div class="">
-                                    <p style="font-size: 2rem; animation-delay: {{$delay+1600}}ms" class="slide-in-left ">{{ $sport->description }}</p>
+                                    <p style="color: #dbf227;font-size: 2rem; animation-delay: {{$delay+1600}}ms" class="slide-in-left ">{{ $sport->description }}</p>
                                 </div>
                             </div>
                         {{-- </div> --}}
