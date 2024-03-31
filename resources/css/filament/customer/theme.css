@@ -1,3 +1,11 @@
 @import '/vendor/filament/filament/resources/css/theme.css';
 
 @config 'tailwind.config.js';
+
+.fi-sidebar-item.fi-active a{
+    background-color: black;
+}
+
+.fi-header a{
+    color: black;
+}
