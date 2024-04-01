@@ -51,14 +51,14 @@
     height: 130vh;
     /* margin-top: 100px; */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 2fr 1fr;
 }
 
 .sports-banner-bottom{
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr 1fr;
 }
 
@@ -167,7 +167,7 @@
     font-size: 6rem;
     font-weight: bold;
     padding: 30px 10px 30px 0px;
-    color: #dbf227;
+    color: #f2c9d4;
 }
 
 .div-heading{
@@ -193,8 +193,8 @@
 }
 
 .feature-logo-style{
-    color: #dbf227;
-    border-color: #dbf227;
+    color: #f2c9d4;
+    border-color: #f2c9d4;
 }
 
 .page-footer{
@@ -229,7 +229,7 @@
 }
 
 .page-footer{
-    background: none repeat scroll 0 0 #dbf227;
+    background: none repeat scroll 0 0 #f2c9d4;
 }
 
 .mainnav .nav-menu li .child-nav{
@@ -242,14 +242,14 @@
 }
 
 .megamenu .nav-menu>li ul.child-nav li a{
-    color: #dbf227;
+    color: #f2c9d4;
 }
 .megamenu .nav-menu>li ul.child-nav li>a:hover{
     color: white;
 }
 .join a, .watch-video a{
-    border: 2px solid #dbf227;
-    color: #dbf227;
+    border: 2px solid #f2c9d4;
+    color: #f2c9d4;
 }
 
 .footer-link{
@@ -322,7 +322,7 @@
     }
     .sports-banner{
         grid-template-columns: 1fr;
-        grid-template-rows: 1.5fr 1fr 1fr 1fr;
+        grid-template-rows: 1.5fr 1.2fr 1.2fr;
     }
     .banner-body-sports{
         padding-top: 0px;
@@ -359,7 +359,7 @@
 }
 
 .header-container-2, .header-container-3{
-    background: none repeat scroll 0 0 #dbf227!important;
+    background: none repeat scroll 0 0 #f2c9d4!important;
 }
 
 .megamenu ul>li>a{

@@ -151,10 +151,10 @@
                             {{-- <div class="img-class"><img src="{{ asset('storage/'.$sport->attachments[0]) }}" alt="Men Class"></div> --}}
                             <div class="">
                                 <div class="title">
-                                    <h3 class="slide-in-left title-men" style="color: #dbf227;font-size: 3rem;font-weight: bold; animation-delay: {{$delay+800}}ms">{{ $sport->name }}</h3>
+                                    <h3 class="slide-in-left title-men" style="color: #f2c9d4;font-size: 3rem;font-weight: bold; animation-delay: {{$delay+800}}ms">{{ $sport->name }}</h3>
                                 </div>
                                 <div class="">
-                                    <p style="color: #dbf227;font-size: 2rem; animation-delay: {{$delay+1600}}ms" class="slide-in-left ">{{ $sport->description }}</p>
+                                    <p style="color: #f2c9d4;font-size: 2rem; animation-delay: {{$delay+1600}}ms" class="slide-in-left ">{{ $sport->description }}</p>
                                 </div>
                             </div>
                         {{-- </div> --}}

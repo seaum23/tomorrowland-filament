@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => "#dbf227",
+                'primary' => "#f2c9d4",
                 'black' => [
                     50 => '0, 0, 0',
                     100 => '0, 0, 0',
