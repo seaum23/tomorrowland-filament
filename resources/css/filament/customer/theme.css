@@ -9,3 +9,16 @@
 .fi-header a{
     color: black;
 }
+
+.fi-wi-stats-overview-stat{
+    background-color: black;
+}
+
+.fi-wi-stats-overview-stat .grid .flex span{
+    font-size: 16px;
+}
+
+.fi-wi-stats-overview-stat .grid .flex span,
+.fi-wi-stats-overview-stat .grid div{
+    color: white;
+}

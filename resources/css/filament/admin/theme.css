@@ -11,3 +11,24 @@
 .fi-header a{
     color: black;
 }
+
+.fi-wi-stats-overview-stat{
+    background-color: black;
+}
+
+.fi-wi-stats-overview-stat .grid .flex span{
+    font-size: 14px;
+}
+
+.fi-wi-stats-overview-stat .grid .flex span,
+.fi-wi-stats-overview-stat .grid div{
+    color: white;
+}
+
+.fi-wi-widget .fi-section{
+    background-color: black;
+}
+
+.fi-wi-widget .fi-section .grid h3{
+    color: white;
+}

@@ -12,6 +12,37 @@ class LastWeekBookingChart extends ChartWidget
     protected static ?string $heading = 'Number of booking in the last 7 days';
     protected static ?string $maxHeight = '200px';
 
+    protected static ?array $options = [
+        'plugins' => [
+            'legend' => [
+                'labels' => [
+                    'color' => 'white',
+                    'font' => [
+                        'color' => 'white'
+                    ]
+                ],
+            ],
+        ],
+        'scales' => [
+            'x' => [
+                'ticks' => [
+                    'color' => 'white',
+                    'font' => [
+                        'size' => 14,
+                    ]
+                ]
+            ],                    
+            'y' => [
+                'ticks' => [
+                    'color' => 'white',
+                    'font' => [
+                        'size' => 14
+                    ]
+                ]
+            ]
+        ]
+    ];
+
     protected function getData(): array
     {
         $last_days = 15;
@@ -37,6 +68,7 @@ class LastWeekBookingChart extends ChartWidget
                 [
                     'label' => 'Number of Booking',
                     'data' => $dataset,
+                    // 'backgroundColor' => '#000000',
                 ],
             ],
             'labels' => $labels,
